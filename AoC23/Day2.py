@@ -1,11 +1,12 @@
 from helpers import AoCHelper
 import re
+from typing import Dict, List, Tuple
 
 input = AoCHelper.read_input_lines("Day2/inputs1.txt")
 
 
-def parse_input(input):
-    games = []
+def parse_input(input: str) -> List[Tuple[int, Dict[str, List[int]]]]:
+    games: List[Tuple[int, Dict[str, List[int]]]] = []
     for i in input:
         color_dict = {"green": [], "blue": [], "red": []}
         game, rounds = i.split(":")
@@ -16,7 +17,7 @@ def parse_input(input):
             amount, color = cr.strip().split()
             color_dict[color].append(int(amount))
 
-        games.append((game_id, color_dict))
+        games.append((int(game_id), color_dict))
 
     return games
 
@@ -25,7 +26,7 @@ games = parse_input(input)
 result = result2 = 0
 for id, dict in games:
     if max(dict["red"]) <= 12 and max(dict["green"]) <= 13 and max(dict["blue"]) <= 14:
-        result += int(id)
+        result += id
 
     result2 += max(dict["red"]) * max(dict["green"]) * max(dict["blue"])
 
