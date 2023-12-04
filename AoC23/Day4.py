@@ -16,8 +16,7 @@ for idx, c in enumerate(cards):
     if matches > 0:
         result += 2**(matches-1)
 
-    for i in range(matches):
-        counter[idx + i + 1] += counter[idx]
+    counter += {idx + i + 1: counter[idx] for i in range(matches)}
 
 result2 = sum(counter.values())
 
