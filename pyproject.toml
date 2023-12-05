@@ -26,10 +26,22 @@ line-length = 80
 line-length = 80
 fixable = ["ALL"]
 select = [
+    "D",  # pydocstyle
     "F",  # pyflakes
+    "PT", # pytest
     "E",  # pycodestyle
     "W",  # pycodestyle
     "I001", # isort
+]
+ignore = [
+    "D100",  # Missing docstring in public module
+    "D102",  # Missing docstring in public method
+    "D103",  # Missing docstring in public function
+    "D104",  # Missing docstring in public package
+    "D107",  # Missing docstring in `__init__` method
+    "D417",  # Missing argument description for *args, **kwargs
+    "D211",
+    "D213",
 ]
 
 [tool.pytest.ini_options]
