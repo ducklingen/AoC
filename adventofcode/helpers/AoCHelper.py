@@ -42,10 +42,7 @@ def prod(ints):
 
 
 def list_to_string(listofstrings, separator=""):
-    string = ""
-    for l in listofstrings:
-        string += str(l) + separator
-    return string
+    return separator.join(listofstrings)
 
 
 def group_lines(inputlines):
@@ -147,12 +144,12 @@ def split_lines_into_chunks(lines, delimiters):
     chuncks = []
     chunk = []
 
-    for l in lines:
-        if l in delimiters:
+    for line in lines:
+        if line in delimiters:
             chuncks.append(chunk)
             chunk = []
         else:
-            chunk.append(l)
+            chunk.append(line)
 
     chuncks.append(chunk)
 
@@ -160,12 +157,7 @@ def split_lines_into_chunks(lines, delimiters):
 
 
 def combine_lists(lists):
-    res = []
-
-    for l in lists:
-        res += l
-
-    return res
+    return [x for list in lists for x in list]
 
 
 def is_integer(b):

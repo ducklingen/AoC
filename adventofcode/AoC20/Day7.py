@@ -1,6 +1,6 @@
-from helpers.AoCHelper import *
+from adventofcode.helpers.AoCHelper import list_to_string, read_input_lines
 
-inputlines = read_input_lines("day7/day7input1.txt")
+inputlines = read_input_lines("AoC20/Inputs/day7/day7input1.txt")
 
 specialbag = "shiny gold bag"
 
