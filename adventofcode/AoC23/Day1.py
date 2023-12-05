@@ -1,36 +1,59 @@
-from adventofcode.helpers import AoCHelper
 import regex as re
 
-lines = AoCHelper.read_input_lines("Day1/inputs1.txt")
+from adventofcode.helpers import AoCHelper
 
-digit_words = {
-    "one": 1,
-    "two": 2,
-    "three": 3,
-    "four": 4,
-    "five": 5,
-    "six": 6,
-    "seven": 7,
-    "eight": 8,
-    "nine": 9,
-}
 
-result1 = 0
-for l in lines:
-    numbers = [int(d) for d in re.findall(r"\d", l)]
-    result1 += 10 * numbers[0] + numbers[-1]
+def combine_ends(numbers: list[int]) -> int:
+    return 10 * numbers[0] + numbers[-1]
 
-assert result1 == 55607
-print(f"Part 1: {result1}")
 
-result2 = 0
-for l in lines:
-    digits = re.findall(
-        r"\d|one|two|three|four|five|six|seven|eight|nine", l, overlapped=True
-    )
-    real_digits = [int(d) if d.isdigit() else digit_words[d] for d in digits]
+def compute_part_one(filename):
+    lines = AoCHelper.read_input_lines(f"AoC23/Inputs/Day1/{filename}.txt")
 
-    result2 += 10 * real_digits[0] + real_digits[-1]
+    result = 0
+    for line in lines:
+        numbers = [int(d) for d in re.findall(r"\d", line)]
+        result += combine_ends(numbers)
 
-assert result2 == 55291
-print(f"Part 2: {result2}")
+    return result
+
+
+def compute_part_two(filename):
+    digit_words = {
+        "one": 1,
+        "two": 2,
+        "three": 3,
+        "four": 4,
+        "five": 5,
+        "six": 6,
+        "seven": 7,
+        "eight": 8,
+        "nine": 9,
+    }
+
+    lines = AoCHelper.read_input_lines(f"AoC23/Inputs/Day1/{filename}.txt")
+
+    result = 0
+    for line in lines:
+        digits = re.findall(
+            r"\d|one|two|three|four|five|six|seven|eight|nine",
+            line,
+            overlapped=True,
+        )
+        real_digits = [
+            int(d) if d.isdigit() else digit_words[d] for d in digits
+        ]
+
+        result += combine_ends(real_digits)
+
+    return result
+
+
+if __name__ == "__main__":
+    result1 = compute_part_one("inputs1")
+    assert result1 == 55607
+    print(f"Part 1: {result1}")
+
+    result2 = compute_part_two("inputs1")
+    assert result2 == 55291
+    print(f"Part 2: {result2}")
