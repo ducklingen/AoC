@@ -9,9 +9,9 @@ from adventofcode.helpers.GlobalVariables import all_directions
 
 def read_input_lines(filename, linebreaks=False):
     if linebreaks:
-        return [line for line in open("Inputs/" + filename)]
+        return [line for line in open("adventofcode/" + filename)]
     else:
-        return [line.rstrip('\n') for line in open("Inputs/" + filename)]
+        return [line.rstrip('\n') for line in open("adventofcode/" + filename)]
 
 
 def read_input_comma_line(filename):
