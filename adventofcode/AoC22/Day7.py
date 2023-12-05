@@ -2,7 +2,11 @@ from adventofcode.helpers import AoCHelper
 
 input = AoCHelper.read_input_lines("day7/test1.txt")
 
-cd_lines = [i for i in range(len(input)) if (input[i][:4] == '$ cd' and input[i] != '$ cd ..')]
+cd_lines = [
+    i
+    for i in range(len(input))
+    if (input[i][:4] == "$ cd" and input[i] != "$ cd ..")
+]
 cd_lines.append(len(input))
 
 contents = {}
@@ -11,8 +15,9 @@ for idx, j in enumerate(cd_lines[:-1]):
     _, _, dir_name = input[j].split()
 
     # if input[j + 1] == '$ ls' and dir_name not in contents.keys():
-    contents[dir_name] = [l for l in input[j + 2: cd_lines[idx + 1]] if l != '$ cd ..']
-
+    contents[dir_name] = [
+        l for l in input[j + 2 : cd_lines[idx + 1]] if l != "$ cd .."
+    ]
 
 
 dir_names = list(contents.keys())
@@ -24,9 +29,9 @@ def print_contents(contents, tab, dir):
         f, l = c.split()
 
         if AoCHelper.is_integer(f):
-            print(tab * ' ' + ' - ' + c)
+            print(tab * " " + " - " + c)
         else:
-            print(tab * ' ' + ' - ' + l + '/')
+            print(tab * " " + " - " + l + "/")
             print_contents(contents, tab + 2, l)
 
 
@@ -48,7 +53,7 @@ def build_file_structure(contents, dir):
     return dir_cont
 
 
-file_st = {'/': build_file_structure(contents, '/')}
+file_st = {"/": build_file_structure(contents, "/")}
 print(file_st)
 
 
@@ -74,9 +79,13 @@ def calculate_dir_sizes(struct, dir, prefix):
             print(f"Adding {int(struct[k])}B for file {k} to size of dir {dir}")
             direct_size += int(struct[k])
         elif len(struct[k].keys()) > 0:
-            underlying_struct_sizes = calculate_dir_sizes(struct[k], prefix + '/' + k, prefix + k)
+            underlying_struct_sizes = calculate_dir_sizes(
+                struct[k], prefix + "/" + k, prefix + k
+            )
             dir_sizes.update(underlying_struct_sizes)
-            direct_size += sum([x - y for (x, y) in underlying_struct_sizes.values()])
+            direct_size += sum(
+                [x - y for (x, y) in underlying_struct_sizes.values()]
+            )
 
     dir_sizes[dir] = (direct_size, indirect_size)
 

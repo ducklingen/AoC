@@ -8,7 +8,7 @@ register_value = 1
 for i in input:
     cycle_register_values.append(register_value)
 
-    if i != 'noop':
+    if i != "noop":
         a, v = i.split()
         val = int(v)
 
@@ -20,12 +20,12 @@ res = sum([i * cycle_register_values[i - 1] for i in sample_idx])
 assert res == 16880
 print(f"Part 1: {res}")
 
-crt = ['', '', '', '', '', '']
+crt = ["", "", "", "", "", ""]
 for j in range(240):
-    char_to_print = ' '
+    char_to_print = " "
 
-    if abs(j % 40  - cycle_register_values[j]) <= 1:
-        char_to_print = '#'
+    if abs(j % 40 - cycle_register_values[j]) <= 1:
+        char_to_print = "#"
 
     crt[j // 40] += char_to_print
 

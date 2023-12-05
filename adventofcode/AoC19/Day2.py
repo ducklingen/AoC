@@ -11,9 +11,13 @@ def runProgram(programToRun):
         secondInput = int(programToRun[start + 2])
 
         if operation == 1:
-            programToRun[int(programToRun[start + 3])] = int(programToRun[firstInput]) + int(programToRun[secondInput])
+            programToRun[int(programToRun[start + 3])] = int(
+                programToRun[firstInput]
+            ) + int(programToRun[secondInput])
         if operation == 2:
-            programToRun[int(programToRun[start + 3])] = int(programToRun[firstInput]) * int(programToRun[secondInput])
+            programToRun[int(programToRun[start + 3])] = int(
+                programToRun[firstInput]
+            ) * int(programToRun[secondInput])
 
         start = start + 4
 
@@ -23,7 +27,7 @@ def runProgram(programToRun):
 def printProcessedInput(programToRun):
     processedInput = runProgram(programToRun)
 
-    outputOfProgram = ','.join(map(str, processedInput))
+    outputOfProgram = ",".join(map(str, processedInput))
 
     print(outputOfProgram)
 

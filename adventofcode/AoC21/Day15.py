@@ -15,23 +15,37 @@ hard_grid = []
 for i in range(len(input_lines) * 5):
     h_line = []
     for j in range(5):
-        h_line += [int(n) + j + (i // len(input_lines)) if int(n) + j + (i // len(input_lines)) <= 9 else int(n) + j + (i // len(input_lines)) - 9 for n in input_lines[i % len(input_lines)]]
+        h_line += [
+            int(n) + j + (i // len(input_lines))
+            if int(n) + j + (i // len(input_lines)) <= 9
+            else int(n) + j + (i // len(input_lines)) - 9
+            for n in input_lines[i % len(input_lines)]
+        ]
 
     hard_grid.append(h_line)
 
 
 def find_shortest(grid):
-
-    distance = {node: 0 if node == (0,0) else maxsize for node in product(range(len(grid)), range(len(grid[0])))}
+    distance = {
+        node: 0 if node == (0, 0) else maxsize
+        for node in product(range(len(grid)), range(len(grid[0])))
+    }
     tentative_nodes = PriorityQueue()
     x = y = 0
 
     while not (x == len(grid) - 1 and y == len(grid[0]) - 1):
         for n, m in [(0, 1), (1, 0), (-1, 0), (0, -1)]:
             if 0 <= x + n < len(grid) and 0 <= y + m < len(grid[0]):
-                if distance[(x, y)] + grid[x + n][y + m] < distance[(x + n, y + m)]:
-                    distance[(x + n, y + m)] = distance[(x, y)] + grid[x + n][y + m]
-                    tentative_nodes.put((distance[(x + n, y + m)], (x + n, y + m)))
+                if (
+                    distance[(x, y)] + grid[x + n][y + m]
+                    < distance[(x + n, y + m)]
+                ):
+                    distance[(x + n, y + m)] = (
+                        distance[(x, y)] + grid[x + n][y + m]
+                    )
+                    tentative_nodes.put(
+                        (distance[(x + n, y + m)], (x + n, y + m))
+                    )
 
         if not tentative_nodes.empty():
             new_element = tentative_nodes.get()

@@ -9,26 +9,26 @@ dots = set([])
 
 # Initialization
 for i in input_lines:
-    if i[:4] == 'fold':
+    if i[:4] == "fold":
         a, b, c = i.split()
-        d, n = c.split('=')
+        d, n = c.split("=")
         instructions.append((d, int(n)))
-    elif i != '':
-        x, y = i.split(',')
+    elif i != "":
+        x, y = i.split(",")
         dots.add((int(x), int(y)))
 
 
 def fold(dots, d, n):
     new_dots = set([])
 
-    if d == 'x':
+    if d == "x":
         for x, y in dots:
             if x > n:
                 new_dots.add((2 * n - x, y))
             else:
                 new_dots.add((x, y))
 
-    if d == 'y':
+    if d == "y":
         for x, y in dots:
             if y > n:
                 new_dots.add((x, 2 * n - y))
@@ -48,12 +48,12 @@ for d, n in instructions:
     hard_dots = fold(hard_dots, d, n)
 
 for i in range(7):
-    line = ''
+    line = ""
     for j in range(41):
         if (j, i) in hard_dots:
-            line += '#'
+            line += "#"
         else:
-            line += ' '
+            line += " "
 
     print(line)
 

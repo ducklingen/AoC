@@ -12,21 +12,21 @@ sys.setrecursionlimit(5000)
 def decimal_to_binary(n, expand=False):
     if expand:
         binary = bin(n).replace("0b", "")
-        leading_zeros = 36-len(binary)
-        return '0'*leading_zeros + binary
+        leading_zeros = 36 - len(binary)
+        return "0" * leading_zeros + binary
     else:
         return bin(n).replace("0b", "")
 
 
 def write_to_adresses(value, position, mask):
-    position_as_binary = decimal_to_binary(position,True)
-    masked_position = mask_value(position_as_binary, mask, '0')
+    position_as_binary = decimal_to_binary(position, True)
+    masked_position = mask_value(position_as_binary, mask, "0")
 
-    for comb in get_all_combinations([0, 1], masked_position.count('X')):
+    for comb in get_all_combinations([0, 1], masked_position.count("X")):
         idx = 0
-        new_position = ''
+        new_position = ""
         for i in range(len(mask)):
-            if masked_position[i] == 'X':
+            if masked_position[i] == "X":
                 new_position += str(comb[idx])
                 idx += 1
             else:
@@ -36,7 +36,7 @@ def write_to_adresses(value, position, mask):
 
 
 def mask_value(value_to_mask, mask, char_to_ignore):
-    new_value = ''
+    new_value = ""
     for i in range(len(mask)):
         if mask[i] != char_to_ignore:
             new_value += mask[i]
@@ -47,15 +47,15 @@ def mask_value(value_to_mask, mask, char_to_ignore):
 
 
 # Part 1
-input_lines = read_input_lines('day14/day14input1.txt')
-mask = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+input_lines = read_input_lines("day14/day14input1.txt")
+mask = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 memory = {}
 
 for i in input_lines:
-    if i[:3] == 'mem':
+    if i[:3] == "mem":
         position, value = extract_numbers_from_line(i)
-        value_as_binary = decimal_to_binary(value,True)
-        masked_value = int(mask_value(value_as_binary, mask, 'X'), 2)
+        value_as_binary = decimal_to_binary(value, True)
+        masked_value = int(mask_value(value_as_binary, mask, "X"), 2)
         memory[position] = masked_value
 
     else:
@@ -66,14 +66,14 @@ assert p1 == 11612740949946
 print("Part 1: " + str(p1))
 
 # Part 2
-input_lines = read_input_lines('day14/day14input1.txt')
-mask = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+input_lines = read_input_lines("day14/day14input1.txt")
+mask = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 memory = {}
 
 for i in input_lines:
-    if i[:3] == 'mem':
+    if i[:3] == "mem":
         position, value = extract_numbers_from_line(i)
-        value_as_binary = decimal_to_binary(value,True)
+        value_as_binary = decimal_to_binary(value, True)
         write_to_adresses(value, position, mask)
     else:
         mask = i[7:]

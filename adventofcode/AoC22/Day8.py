@@ -10,7 +10,7 @@ for i in range(len(tree_map)):
 
     for j in range(len(tree_map[i])):
         if tree_map[i][j] > a:
-            visible_trees.add((i,j))
+            visible_trees.add((i, j))
             a = tree_map[i][j]
 
         if tree_map[i][len(input[i]) - j - 1] > b:
@@ -71,7 +71,10 @@ def scenic_score(map, i, j):
     return visible_trees_e * visible_trees_n * visible_trees_s * visible_trees_w
 
 
-scenic_scores = [[scenic_score(tree_map, i, j) for j in range(len(tree_map))] for i in range(len(tree_map))]
+scenic_scores = [
+    [scenic_score(tree_map, i, j) for j in range(len(tree_map))]
+    for i in range(len(tree_map))
+]
 res = max([max(s) for s in scenic_scores])
 assert res == 211680
 print(f"Part 2: {res}")

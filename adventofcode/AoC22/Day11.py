@@ -11,7 +11,7 @@ def init_game(desc):
     monkeys = []
     for m in desc:
         starting_items = AoCHelper.extract_numbers_from_line(m[1])
-        _, operation = m[2].split(' = ')
+        _, operation = m[2].split(" = ")
         divisor = AoCHelper.extract_numbers_from_line(m[3])[0]
         throw_t = AoCHelper.extract_numbers_from_line(m[4])[0]
         throw_f = AoCHelper.extract_numbers_from_line(m[5])[0]
@@ -21,14 +21,14 @@ def init_game(desc):
 
 
 def perform_operation(operation, input):
-    a, op, b = operation.split(' ')
+    a, op, b = operation.split(" ")
 
-    if a == 'old':
+    if a == "old":
         a = input
-    if b == 'old':
+    if b == "old":
         b = input
 
-    if op == '+':
+    if op == "+":
         return int(a) + int(b)
     else:
         return int(a) * int(b)

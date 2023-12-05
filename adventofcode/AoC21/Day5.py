@@ -6,6 +6,7 @@ grid_size = max(AoCHelper.combine_lists(lines))
 
 print(f"Grid size: {grid_size}")
 
+
 def draw_lines(lines, grid_size, include_diagonals):
     grid = [[0 for j in range(grid_size + 1)] for i in range(grid_size + 1)]
 
@@ -20,21 +21,21 @@ def draw_lines(lines, grid_size, include_diagonals):
             for k in range(min(x1, x2), max(x1, x2) + 1):
                 grid[k][y1] = grid[k][y1] + 1
 
-        if abs(y2-y1) == abs(x2-x1) and include_diagonals:
-            line_lenght = abs(y2-y1) + 1
+        if abs(y2 - y1) == abs(x2 - x1) and include_diagonals:
+            line_lenght = abs(y2 - y1) + 1
 
             if x1 < x2 and y1 < y2:
                 for i in range(line_lenght):
-                    grid[x1+i][y1+i] = grid[x1+i][y1+i] + 1
+                    grid[x1 + i][y1 + i] = grid[x1 + i][y1 + i] + 1
             if x1 < x2 and y1 > y2:
                 for i in range(line_lenght):
-                    grid[x1+i][y1-i] = grid[x1+i][y1-i] + 1
+                    grid[x1 + i][y1 - i] = grid[x1 + i][y1 - i] + 1
             if x1 > x2 and y1 < y2:
                 for i in range(line_lenght):
-                    grid[x1-i][y1+i] = grid[x1-i][y1+i] + 1
+                    grid[x1 - i][y1 + i] = grid[x1 - i][y1 + i] + 1
             if x1 > x2 and y1 > y2:
                 for i in range(line_lenght):
-                    grid[x1-i][y1-i] = grid[x1-i][y1-i] + 1
+                    grid[x1 - i][y1 - i] = grid[x1 - i][y1 - i] + 1
 
     return grid
 

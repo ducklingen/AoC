@@ -3,13 +3,15 @@ import hashlib
 import time
 
 tic = time.perf_counter()
-key = 'yzbqklnj'
+key = "yzbqklnj"
 
 int = 0
 secretFound = False
 
 while not secretFound:
-    if re.search('^[0]{6}', (hashlib.md5((key + str(int)).encode())).hexdigest()):
+    if re.search(
+        "^[0]{6}", (hashlib.md5((key + str(int)).encode())).hexdigest()
+    ):
         print(int)
         secretFound = True
     else:

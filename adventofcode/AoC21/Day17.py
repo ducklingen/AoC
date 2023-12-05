@@ -3,8 +3,8 @@ import time
 
 def get_corners(area):
     a, b, c, d = area.split()
-    x1, x2 = map(int, str(c[2:-1]).split('..'))
-    y1, y2 = map(int, str(d[2:]).split('..'))
+    x1, x2 = map(int, str(c[2:-1]).split(".."))
+    y1, y2 = map(int, str(d[2:]).split(".."))
 
     return x1, x2, y1, y2
 
@@ -33,7 +33,7 @@ def get_trajectory(x_vel, y_vel, target):
 start_time = time.time()
 
 # input = 'target area: x=20..30, y=-10..-5'
-input = 'target area: x=288..330, y=-96..-50'
+input = "target area: x=288..330, y=-96..-50"
 x1, x2, y1, y2 = get_corners(input)
 y_vel = y1
 traj_res = []

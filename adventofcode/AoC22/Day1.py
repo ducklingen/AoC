@@ -18,4 +18,3 @@ print(f"Part 1: {res}")
 res = sum(get_top_n([sum(map(int, g)) for g in groups], 3))
 assert res == 199357
 print(f"Part 2: {res}")
-

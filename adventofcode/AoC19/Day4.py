@@ -29,14 +29,20 @@ def hasNondecreasingDigits(number):
 def hasTwoAdjecentPairButOnlyPairOfDigits(number):
     result = False
 
-    for i in '1234567890':
+    for i in "1234567890":
         if i + i in str(number) and i + i + i not in str(number):
             return True
 
     return result
 
+
 def isValidPassword(number):
-    return isSixDigits(number) and hasTwoAdjecentPairButOnlyPairOfDigits(number) and hasNondecreasingDigits(number)
+    return (
+        isSixDigits(number)
+        and hasTwoAdjecentPairButOnlyPairOfDigits(number)
+        and hasNondecreasingDigits(number)
+    )
+
 
 numberOfValidPasswords = 0
 
@@ -66,5 +72,3 @@ print(numberOfValidPasswords)
 # print(isValidPassword(111111))
 # print(isValidPassword(223450))
 # print(isValidPassword(123789))
-
-

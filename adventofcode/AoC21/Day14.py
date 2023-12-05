@@ -11,21 +11,38 @@ template = input_lines[0]
 instructions = {}
 
 for i in range(2, len(input_lines)):
-    pos, val = input_lines[i].split(' -> ')
+    pos, val = input_lines[i].split(" -> ")
     instructions[pos] = val
 
 
 def run_game(game_lenght, instructions, template):
-    changes = {pos: [pos[0] + value, value + pos[1]] for pos, value in instructions.items()}
+    changes = {
+        pos: [pos[0] + value, value + pos[1]]
+        for pos, value in instructions.items()
+    }
     pair_counter = Counter({ins: template.count(ins) for ins in instructions})
     letter_counter = Counter(template)
 
     for n in range(game_lenght):
-        letter_counter += {k: sum(value for ins, value in pair_counter.items() if instructions[ins] == k)
-                           for k in instructions.values()}
+        letter_counter += {
+            k: sum(
+                value
+                for ins, value in pair_counter.items()
+                if instructions[ins] == k
+            )
+            for k in instructions.values()
+        }
 
-        pair_counter = Counter({ins: sum(pair_counter[change] for change in changes if ins in changes[change])
-                                for ins in instructions})
+        pair_counter = Counter(
+            {
+                ins: sum(
+                    pair_counter[change]
+                    for change in changes
+                    if ins in changes[change]
+                )
+                for ins in instructions
+            }
+        )
 
     return max(letter_counter.values()) - min(letter_counter.values())
 

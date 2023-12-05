@@ -19,9 +19,8 @@ class BingoSheet:
             self.status[self.sheet.index(number_picked)] = 1
 
     def check_for_bingo(self):
-
         for j in range(5):
-            if sum(self.status[j*5: j*5+5]) == 5:
+            if sum(self.status[j * 5 : j * 5 + 5]) == 5:
                 return True
 
             if sum([self.status[k] for k in range(25) if k % 5 == j]) == 5:
@@ -30,7 +29,7 @@ class BingoSheet:
         return False
 
     def get_score(self):
-        return sum([k * (1-n) for k, n in zip(self.sheet, self.status)])
+        return sum([k * (1 - n) for k, n in zip(self.sheet, self.status)])
 
 
 def initialize_bingo(input_lines):
@@ -38,15 +37,16 @@ def initialize_bingo(input_lines):
     sheets = AoCHelper.group_lines(input_lines[2:])
 
     for idx, sheet in enumerate(sheets):
-        sheet_as_string = ' '.join(sheet)
-        sheet_as_number_list = AoCHelper.extract_numbers_from_line(sheet_as_string)
+        sheet_as_string = " ".join(sheet)
+        sheet_as_number_list = AoCHelper.extract_numbers_from_line(
+            sheet_as_string
+        )
         sheet_objects.append(BingoSheet(sheet_as_number_list, idx))
 
     return sheet_objects
 
 
 def run_game_easy(sheet_objects, numbers_picked):
-
     for k in numbers_picked:
         for sheet in sheet_objects:
             sheet.update_status(k)

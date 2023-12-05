@@ -10,7 +10,7 @@ input = input_lines[0]
 ins = bin(int(input, 16))[2:].zfill(len(input) * 4)
 
 
-class Package():
+class Package:
     version = 0
     type = 0
     lit_val = 0
@@ -22,7 +22,7 @@ class Package():
 
 
 def extract_number(input, index, size):
-    return int(input[index:index + size], 2), index + size
+    return int(input[index : index + size], 2), index + size
 
 
 def unpack(input, index, number_of_packages, end_of_package):
@@ -35,14 +35,14 @@ def unpack(input, index, number_of_packages, end_of_package):
         package = Package(version, type)
 
         if type == 4:
-            lit_val_string = ''
+            lit_val_string = ""
             last_pack = False
 
             while not last_pack:
-                if input[index] == '0':
+                if input[index] == "0":
                     last_pack = True
 
-                lit_val_string += input[index + 1: index + 5]
+                lit_val_string += input[index + 1 : index + 5]
                 index += 5
 
             package.lit_val = int(lit_val_string, 2)
@@ -52,11 +52,15 @@ def unpack(input, index, number_of_packages, end_of_package):
 
             if lenght_type == 0:
                 lenght, index = extract_number(input, index, 15)
-                subpackages, index = unpack(input, index, maxsize, index + lenght)
+                subpackages, index = unpack(
+                    input, index, maxsize, index + lenght
+                )
                 package.subpackages = subpackages
             else:
                 number_of_sub_packages, index = extract_number(input, index, 11)
-                subpackages, index = unpack(input, index, number_of_sub_packages, maxsize)
+                subpackages, index = unpack(
+                    input, index, number_of_sub_packages, maxsize
+                )
                 package.subpackages = subpackages
 
         packages.append(package)

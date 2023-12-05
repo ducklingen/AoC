@@ -1,5 +1,6 @@
 from adventofcode.helpers import AoCHelper
 
+
 def convertInputToBoard(lines):
     board = []
 
@@ -15,6 +16,8 @@ def convertInputToBoard(lines):
         board.append(row)
 
     return board
+
+
 def printBoard(board):
     for row in board:
         rowAsString = ""
@@ -26,6 +29,8 @@ def printBoard(board):
                 rowAsString += "."
 
         print(rowAsString)
+
+
 def amountOfNeighbouringBugs(board, x, y):
     neighbouringBugs = 0
 
@@ -39,6 +44,8 @@ def amountOfNeighbouringBugs(board, x, y):
         neighbouringBugs += board[x][y + 1]
 
     return neighbouringBugs
+
+
 def calculateNextStateOfPoint(board, x, y):
     if board[x][y] == 1:
         result = 1 if amountOfNeighbouringBugs(board, x, y) == 1 else 0
@@ -46,12 +53,16 @@ def calculateNextStateOfPoint(board, x, y):
         result = 1 if amountOfNeighbouringBugs(board, x, y) in (1, 2) else 0
 
     return result
+
+
 def passTime(board):
-    newBoard = [[0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0]]
+    newBoard = [
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+    ]
 
     for i in range(5):
         for j in range(5):
@@ -59,9 +70,11 @@ def passTime(board):
 
     return newBoard
 
+
 lines = AoCHelper.readInputLines("day24input.txt")
 
 board = convertInputToBoard(lines)
+
 
 def boardAsString(board):
     boardAsString = ""
@@ -100,6 +113,6 @@ result = 0
 
 for i in range(len(boardString)):
     if int(boardString[i]) == 1:
-        result += 2 ** i
+        result += 2**i
 
 print(result)

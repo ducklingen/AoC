@@ -10,7 +10,7 @@ def getNextInstruction(instructionParam):
 def getParameter(io, paramPos, instructionPos, programToRun):
     iofields = list(io)
     iofields.reverse()
-    iofields = iofields + ['0', '0', '0', '0', '0']
+    iofields = iofields + ["0", "0", "0", "0", "0"]
 
     intermediate = int(iofields[paramPos + 1])
 
@@ -26,13 +26,18 @@ def runProgram(programToRun, input):
     instruction = getNextInstruction(int(programToRun[instructionPosition]))
 
     while instruction in (1, 2, 3, 4, 5, 6, 7, 8):
-
         instructionObject = str(programToRun[instructionPosition])
 
         if len(instructionObject) > 2:
-            firstInput = getParameter(instructionObject, 1, instructionPosition, programToRun)
-            secondInput = getParameter(instructionObject, 2, instructionPosition, programToRun)
-            output = getParameter(instructionObject, 3, instructionPosition, programToRun)
+            firstInput = getParameter(
+                instructionObject, 1, instructionPosition, programToRun
+            )
+            secondInput = getParameter(
+                instructionObject, 2, instructionPosition, programToRun
+            )
+            output = getParameter(
+                instructionObject, 3, instructionPosition, programToRun
+            )
         else:
             firstInput = int(programToRun[instructionPosition + 1])
             secondInput = int(programToRun[instructionPosition + 2])
@@ -42,10 +47,14 @@ def runProgram(programToRun, input):
                 output = 0
 
         if instruction == 1:
-            programToRun[output] = int(programToRun[firstInput]) + int(programToRun[secondInput])
+            programToRun[output] = int(programToRun[firstInput]) + int(
+                programToRun[secondInput]
+            )
             nextStep = instructionPosition + 4
         if instruction == 2:
-            programToRun[output] = int(programToRun[firstInput]) * int(programToRun[secondInput])
+            programToRun[output] = int(programToRun[firstInput]) * int(
+                programToRun[secondInput]
+            )
             nextStep = instructionPosition + 4
         if instruction == 3:
             programToRun[firstInput] = input

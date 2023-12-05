@@ -13,7 +13,7 @@ def letter_value(char):
 
 res = 0
 for i in input:
-    left, right = list(i)[:ceil(len(i)/2)], list(i)[ceil(len(i)/2):]
+    left, right = list(i)[: ceil(len(i) / 2)], list(i)[ceil(len(i) / 2) :]
     common_element = AoCHelper.intersection(left, right)[0]
     res += letter_value(common_element)
 
@@ -22,8 +22,8 @@ print(f"Part 1: {res}")
 
 
 res = 0
-for i in range(ceil(len(input)/3)):
-    a, b, c = input[i * 3: i * 3 + 3]
+for i in range(ceil(len(input) / 3)):
+    a, b, c = input[i * 3 : i * 3 + 3]
     common_element = list(set(a) & set(b) & set(c))[0]
     res += letter_value(common_element)
 

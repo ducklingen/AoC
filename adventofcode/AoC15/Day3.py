@@ -1,4 +1,4 @@
-routes = read_input_lines('day3/input1.txt')
+routes = read_input_lines("day3/input1.txt")
 
 
 class Santa:
@@ -10,11 +10,11 @@ class Santa:
         self.y = 0
 
     def nextHouse(self, direction):
-        if direction == '<':
+        if direction == "<":
             self.x -= 1
-        elif direction == '>':
+        elif direction == ">":
             self.x += 1
-        elif direction == '^':
+        elif direction == "^":
             self.y += 1
         else:
             self.y -= 1
@@ -33,7 +33,7 @@ santa = Santa()
 x = 0
 y = 0
 for d in routes[0]:
-    (x,y) = santa.nextHouse(d)
+    (x, y) = santa.nextHouse(d)
 
     houses.append("x" + str(x) + "y" + str(y))
 

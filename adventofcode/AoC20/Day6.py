@@ -23,4 +23,3 @@ for c in ascii_lowercase:
 
 assert numberOfYeses == 3360
 prints("Part 2: " + str(numberOfYeses))
-

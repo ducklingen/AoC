@@ -24,7 +24,7 @@ def play_n_turns(n):
 
     previous_turn = input_numbers[len(input_numbers) - 1]
 
-    for i in range(len(input_numbers), n+2):
+    for i in range(len(input_numbers), n + 2):
         if previous_turn in dict.keys():
             last_spoken = dict[previous_turn] + 1
             dict[previous_turn] = i - 1
@@ -33,8 +33,9 @@ def play_n_turns(n):
         else:
             dict[previous_turn] = i - 1
             previous_turn = 0
-        if i+1 == n:
+        if i + 1 == n:
             return previous_turn
+
 
 # toc = time.perf_counter()
 # print(f"Performed task in {toc - tic:0.4f} seconds")
@@ -46,4 +47,3 @@ assert p1 == 240
 assert p2 == 505
 print("Part 1: " + str(p1))
 print("Part 2: " + str(p2))
-

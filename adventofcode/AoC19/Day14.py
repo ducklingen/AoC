@@ -32,20 +32,28 @@ amountsOfOre = 0
 
 leftovers = {}
 
+
 def oreNeededFor(type, amount):
     if type == "ORE":
         return int(amount)
     else:
         recipeOutput = recipes[type][0]
-        recipeMultiple = ceil((int(amount) - int(leftovers.setdefault(type, 0))) / int(recipeOutput))
+        recipeMultiple = ceil(
+            (int(amount) - int(leftovers.setdefault(type, 0)))
+            / int(recipeOutput)
+        )
 
-        leftovers[type] = recipeMultiple * int(recipeOutput) - (int(amount) - int(leftovers.setdefault(type, 0)))
+        leftovers[type] = recipeMultiple * int(recipeOutput) - (
+            int(amount) - int(leftovers.setdefault(type, 0))
+        )
 
         oreNeeded = 0
 
         for reagent in recipes[type][1]:
             # print("Use " + str(recipeMultiple*int(reagent[0])) + " batches of " + reagent[1] + " for " + str(amount) + " batches of " + type)
-            oreNeeded = oreNeeded + oreNeededFor(reagent[1], recipeMultiple * int(reagent[0]))
+            oreNeeded = oreNeeded + oreNeededFor(
+                reagent[1], recipeMultiple * int(reagent[0])
+            )
 
         return oreNeeded
 

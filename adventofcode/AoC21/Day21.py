@@ -36,7 +36,11 @@ def play_easy(player_one_pos, player_two_pos):
             player_two_score += player_two_pos
             dice_rolls += 3
 
-    return dice_rolls * player_two_score if player_one_score >= 1000 else dice_rolls * player_one_score
+    return (
+        dice_rolls * player_two_score
+        if player_one_score >= 1000
+        else dice_rolls * player_one_score
+    )
 
 
 start_time = time.time()

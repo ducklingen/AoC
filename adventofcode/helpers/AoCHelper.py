@@ -11,12 +11,12 @@ def read_input_lines(filename, linebreaks=False):
     if linebreaks:
         return [line for line in open("adventofcode/" + filename)]
     else:
-        return [line.rstrip('\n') for line in open("adventofcode/" + filename)]
+        return [line.rstrip("\n") for line in open("adventofcode/" + filename)]
 
 
 def read_input_comma_line(filename):
     lines = read_input_lines(filename)
-    return lines[0].split(',')
+    return lines[0].split(",")
 
 
 def read_input_comma_lines(filename):
@@ -25,7 +25,7 @@ def read_input_comma_lines(filename):
     lists = []
 
     for i in lines:
-        lists.append(i.split(','))
+        lists.append(i.split(","))
 
     return lists
 
@@ -41,10 +41,10 @@ def prod(ints):
     return p
 
 
-def list_to_string(listofstrings, separator=''):
-    string = ''
+def list_to_string(listofstrings, separator=""):
+    string = ""
     for l in listofstrings:
-        string += (str(l) + separator)
+        string += str(l) + separator
     return string
 
 
@@ -53,7 +53,7 @@ def group_lines(inputlines):
     group = []
 
     for i in inputlines:
-        if i == '':
+        if i == "":
             groups.append(group)
             group = []
         else:
@@ -65,7 +65,7 @@ def group_lines(inputlines):
 
 
 def extract_numbers_from_line(line):
-    pattern = r'((?<!\d)[+-]?)(\d+)'
+    pattern = r"((?<!\d)[+-]?)(\d+)"
 
     if isinstance(line, str):
         return [int(match.group()) for match in re.finditer(pattern, line)]
@@ -77,31 +77,48 @@ def extract_numbers(lines):
     return [extract_numbers_from_line(line) for line in lines]
 
 
-def get_neighbours(i, j, grid, directions=all_directions, immediate_neighbour=True, characters_to_skip=[]):
+def get_neighbours(
+    i,
+    j,
+    grid,
+    directions=all_directions,
+    immediate_neighbour=True,
+    characters_to_skip=[],
+):
     neighbours = []
 
     for x, y in directions:
-        if immediate_neighbour and 0 <= i + x < len(grid) and 0 <= j + y < len(grid[0]):
+        if (
+            immediate_neighbour
+            and 0 <= i + x < len(grid)
+            and 0 <= j + y < len(grid[0])
+        ):
             neighbours.append(grid[i + x][j + y])
         else:
-            neighbours.append(get_first_in_direction(i, j, grid, x, y, characters_to_skip))
+            neighbours.append(
+                get_first_in_direction(i, j, grid, x, y, characters_to_skip)
+            )
 
     return neighbours
 
 
-def get_first_in_direction(i, j, grid, i_increment, j_increment, characters_to_skip):
-    while 0 <= i + i_increment < len(grid) and 0 <= j + j_increment < len(grid[0]):
+def get_first_in_direction(
+    i, j, grid, i_increment, j_increment, characters_to_skip
+):
+    while 0 <= i + i_increment < len(grid) and 0 <= j + j_increment < len(
+        grid[0]
+    ):
         if grid[i + i_increment][j + j_increment] not in characters_to_skip:
             return grid[i + i_increment][j + j_increment]
         else:
             i += i_increment
             j += j_increment
 
-    return '.'
+    return "."
 
 
 def turn_right(coordinates, degrees):
-    for turn in range(ceil(degrees/90)):
+    for turn in range(ceil(degrees / 90)):
         coordinates = (coordinates[1], -coordinates[0])
 
     return coordinates
@@ -119,7 +136,7 @@ def rotate(coordinates, angle):
 
 
 def lcm(a, b):
-    return abs(a*b) // math.gcd(a, b)
+    return abs(a * b) // math.gcd(a, b)
 
 
 def get_all_combinations(list_of_values, size_of_tuples):
@@ -168,13 +185,13 @@ def to_hashable(*args, **kwargs):
     if len(args) == 1:
         arg = args[0]
         if isinstance(arg, list):
-            return tuple(to_hashable(a) for a in arg),
+            return (tuple(to_hashable(a) for a in arg),)
         elif isinstance(arg, set):
-            return tuple(a for a in sorted(arg, key=hash)),
+            return (tuple(a for a in sorted(arg, key=hash)),)
         elif isinstance(arg, dict):
-            return to_hashable(*arg.items()),
+            return (to_hashable(*arg.items()),)
         elif isinstance(arg, tuple):
-            return arg,
+            return (arg,)
         return arg
     return tuple(to_hashable(arg) for arg in args)
 

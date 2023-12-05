@@ -1,10 +1,10 @@
 from datetime import datetime
 import sys
 
-a={}
+a = {}
 
 A = ""
-with open("leaderboard.json", "r", encoding='utf-8') as f:
+with open("leaderboard.json", "r", encoding="utf-8") as f:
     for l in f:
         A += l
 a = eval(A)
@@ -21,7 +21,8 @@ for id in sorted(mem, key=lambda id: mem[id]["local_score"], reverse=True):
     com = m["completion_day_level"]
     m["times"] = {}
     m["best"] = [None, None, 0, 0]
-    if not com:continue
+    if not com:
+        continue
     sys.stdout.write("%s\t%s\n" % (m["local_score"], m["name"]))
     for c in sorted(com, key=int):
         D = int(c)

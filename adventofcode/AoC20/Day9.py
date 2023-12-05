@@ -2,7 +2,7 @@ from itertools import combinations
 
 from helpers.AoCHelper import *
 
-inputlines = list(map(int, read_input_lines('day9/day9input1.txt')))
+inputlines = list(map(int, read_input_lines("day9/day9input1.txt")))
 preambleLength = 25
 
 
@@ -10,7 +10,7 @@ def find_invalid_number(lines):
     for i in range(preambleLength, len(lines)):
         valid = False
 
-        for j, k in combinations(lines[i - preambleLength: i], 2):
+        for j, k in combinations(lines[i - preambleLength : i], 2):
             if j + k == lines[i]:
                 valid = True
                 break
@@ -38,7 +38,9 @@ def find_contiguous_set(lines, target_number):
 
 
 range_start, range_end = find_contiguous_set(inputlines, special_number)
-p2 = max(inputlines[range_start: range_end]) + min(inputlines[range_start: range_end])
+p2 = max(inputlines[range_start:range_end]) + min(
+    inputlines[range_start:range_end]
+)
 
 assert p2 == 1261309
 print("Part 2: " + str(p2))

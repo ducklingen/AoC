@@ -11,6 +11,7 @@ sys.setrecursionlimit(5000)
 
 # tic = time.perf_counter()
 
+
 # input_lines = read_input_lines('day16/day16input1.txt')
 # rules, my, nearby = split_lines_into_chunks(input_lines, [''])
 # ranges = []
@@ -41,9 +42,9 @@ def is_valid(value, ranges):
 # assert p1 == 26869
 # print(p1)
 
-input_lines = read_input_lines('day16/day16input1.txt')
+input_lines = read_input_lines("day16/day16input1.txt")
 
-rules, my, nearby = split_lines_into_chunks(input_lines, [''])
+rules, my, nearby = split_lines_into_chunks(input_lines, [""])
 nearby_numbers = [extract_numbers_from_line(n) for n in nearby]
 my_ticket = extract_numbers_from_line(my[1])
 position_lists = []
@@ -73,10 +74,12 @@ for idx, p in enumerate(position_lists):
     matching_rules = []
 
     for r in rules:
-
         a, b, c, d = extract_numbers_from_line(r)
-        rule_name = r.split(':')[0]
-        if rule_name in matching_rules_dict.keys() or idx in matching_rules_dict.values():
+        rule_name = r.split(":")[0]
+        if (
+            rule_name in matching_rules_dict.keys()
+            or idx in matching_rules_dict.values()
+        ):
             continue
 
         # print([a <= x <= b or c <= x <= d for x in p])
@@ -86,8 +89,13 @@ for idx, p in enumerate(position_lists):
 
     matching_rules_dict[idx] = matching_rules
 
-    if idx not in matching_rules_dict.keys() or len(matching_rules_dict[idx]) == 0:
-        print("No remaining rules found matching values at position " + str(idx))
+    if (
+        idx not in matching_rules_dict.keys()
+        or len(matching_rules_dict[idx]) == 0
+    ):
+        print(
+            "No remaining rules found matching values at position " + str(idx)
+        )
 
 p2 = 1
 
@@ -108,7 +116,7 @@ for rf in rule_fields:
     print(rf)
     print(rule_fields[rf])
 
-    if rule_fields[rf][:9] == 'departure':
+    if rule_fields[rf][:9] == "departure":
         p2 *= int(my_ticket[rf])
 
 print(p2)

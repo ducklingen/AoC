@@ -4,13 +4,13 @@ input = AoCHelper.read_input_lines("day9/input1.txt")
 
 
 def update_head(i, head_pos):
-    if i == 'R':
+    if i == "R":
         head_pos = (head_pos[0] + 1, head_pos[1])
-    if i == 'L':
+    if i == "L":
         head_pos = (head_pos[0] - 1, head_pos[1])
-    if i == 'D':
+    if i == "D":
         head_pos = (head_pos[0], head_pos[1] - 1)
-    if i == 'U':
+    if i == "U":
         head_pos = (head_pos[0], head_pos[1] + 1)
 
     return head_pos
@@ -45,7 +45,7 @@ def update_tail(head_pos, tail_pos):
 instructions = []
 
 for i in input:
-    d, v = i.split(' ')
+    d, v = i.split(" ")
     instructions += d * int(v)
 
 head_pos = (0, 0)

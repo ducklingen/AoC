@@ -17,5 +17,3 @@ for ints in combinations(map(int, input), 3):
         assert prod(ints) == 212481360
         print("Part 2: " + str(prod(ints)))
         break
-
-

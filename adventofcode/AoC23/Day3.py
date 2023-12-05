@@ -17,7 +17,9 @@ def has_adjacent_symbols(x: int, y: int, len: int, engine) -> bool:
             neighbours += AoCHelper.get_neighbours(x, y + i, engine, directions)
 
         directions.append((0, 1))
-        neighbours += AoCHelper.get_neighbours(x, y + len - 1, engine, directions)
+        neighbours += AoCHelper.get_neighbours(
+            x, y + len - 1, engine, directions
+        )
 
         if set(neighbours) - digits != {"."}:
             return True
@@ -34,7 +36,8 @@ def compute_part_one(filename):
         pattern = r"([1-9]\d*)"
 
         numbers = [
-            (int(match.group()), match.start()) for match in re.finditer(pattern, row)
+            (int(match.group()), match.start())
+            for match in re.finditer(pattern, row)
         ]
 
         for n, idx in numbers:
@@ -55,12 +58,16 @@ def compute_part_two(filename):
 
     for row_id, row in enumerate(engine):
         gear_pattern = r"(\*)"
-        gear_positions = [match.start() for match in re.finditer(gear_pattern, row)]
+        gear_positions = [
+            match.start() for match in re.finditer(gear_pattern, row)
+        ]
 
         number_pattern = r"([1-9]\d*)"
         adjecent_numbers = []
 
-        logging.info(f"Found gear in row {row_id} at positions {gear_positions}")
+        logging.info(
+            f"Found gear in row {row_id} at positions {gear_positions}"
+        )
         for gp in gear_positions:
             numbers = []
             # Finding number above

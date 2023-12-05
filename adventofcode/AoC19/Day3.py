@@ -2,6 +2,7 @@ import sys
 
 from adventofcode.helpers import AoCHelper
 
+
 def getPointsFromWire(wire):
     points = []
 
@@ -12,22 +13,22 @@ def getPointsFromWire(wire):
         direction = destination[0:1]
         length = destination[1:]
 
-        if direction == 'R':
+        if direction == "R":
             for j in range(int(length)):
                 points.append((x, y))
                 x = x + 1
 
-        if direction == 'U':
+        if direction == "U":
             for j in range(int(length)):
                 points.append((x, y))
                 y = y + 1
 
-        if direction == 'L':
+        if direction == "L":
             for j in range(int(length)):
                 points.append((x, y))
                 x = x - 1
 
-        if direction == 'D':
+        if direction == "D":
             for j in range(int(length)):
                 points.append((x, y))
                 y = y - 1
@@ -53,7 +54,6 @@ intersections.remove((0, 0))
 stepsTotal = sys.maxsize
 
 for i in intersections:
-
     steps1 = points1.index(i)
     steps2 = points2.index(i)
 

@@ -2,8 +2,17 @@ from helpers import AoCHelper
 
 input_lines = AoCHelper.read_input_lines("day10/input1.txt")
 
-brackets = {')': '(', ']': '[', '}': '{', '>': '<'}
-bracket_scores = {'(': 1, '[': 2, '{': 3, '<': 4, ')': 3, ']': 57, '}': 1197, '>': 25137}
+brackets = {")": "(", "]": "[", "}": "{", ">": "<"}
+bracket_scores = {
+    "(": 1,
+    "[": 2,
+    "{": 3,
+    "<": 4,
+    ")": 3,
+    "]": 57,
+    "}": 1197,
+    ">": 25137,
+}
 
 incomplete_scores = []
 score = 0

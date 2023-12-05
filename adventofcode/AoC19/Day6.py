@@ -2,12 +2,12 @@ import sys
 
 from adventofcode.helpers import AoCHelper
 
-inputLines = AoCHelper.read_input_lines('day6input.txt')
+inputLines = AoCHelper.read_input_lines("day6input.txt")
 
 orbitPairs = {}
 
 for input in inputLines:
-    nodes = input.split(')')
+    nodes = input.split(")")
 
     center = nodes[0]
     satellite = nodes[1]
@@ -44,11 +44,16 @@ orbitPathOfSan = getOrbitPath("SAN", orbitPairs)
 intersections = set(orbitPathOfSan).intersection(orbitPathOfYou)
 
 distanceToCommonPoint = sys.maxsize
-closestIntersection = ''
+closestIntersection = ""
 
 for i in intersections:
-    if orbitPathOfYou.index(i) + orbitPathOfSan.index(i) < distanceToCommonPoint:
-        distanceToCommonPoint = orbitPathOfYou.index(i) + orbitPathOfSan.index(i)
+    if (
+        orbitPathOfYou.index(i) + orbitPathOfSan.index(i)
+        < distanceToCommonPoint
+    ):
+        distanceToCommonPoint = orbitPathOfYou.index(i) + orbitPathOfSan.index(
+            i
+        )
         closestIntersection = i
 
 print("Hej")
