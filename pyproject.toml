@@ -13,6 +13,7 @@ regex = "^2023.10.3"
 pytest = "^7.4.3"
 ruff = "^0.1.7"
 black = "^23.11.0"
+pyright = "^1.1.338"
 
 [build-system]
 requires = ["poetry-core"]
