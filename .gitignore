@@ -80,4 +80,5 @@ fabric.properties
 
 # My files
 adventofcode/helpers/__init__.py
-adventofcode/helpers/__pycache/
+adventofcode/helpers/__pycache__/
+adventofcode/__pycache__
