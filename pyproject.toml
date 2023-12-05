@@ -30,3 +30,8 @@ select = [
     "W",  # pycodestyle
     "I001", # isort
 ]
+
+[tool.pytest.ini_options]
+log_cli = true
+log_cli_level = "INFO"
+log_cli_format = "%(message)s"

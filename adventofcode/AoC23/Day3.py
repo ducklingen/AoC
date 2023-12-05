@@ -49,7 +49,7 @@ def compute_part_two(filename):
         number_pattern = r"([1-9]\d*)"
         adjecent_numbers = []
 
-        logging.info(
+        logging.debug(
             f"Found gear in row {row_id} at positions {gear_positions}"
         )
         for gp in gear_positions:
@@ -78,7 +78,7 @@ def compute_part_two(filename):
                 int(x) for x, idx in numbers if adjecent_number(gp, idx, x)
             ]
 
-            logging.info(
+            logging.debug(
                 f"Gear at position ({row_id}, {gp}) has adjecent "
                 f"numbers: {adjecent_numbers}"
             )
