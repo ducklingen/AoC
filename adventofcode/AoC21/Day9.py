@@ -25,7 +25,7 @@ def get_basin(i, j, grid, precursors):
 
     for x, y in GlobalVariables.cardinal_directions:
         if 0 <= i + x < len(grid) and 0 <= j + y < len(grid[0]):
-            if (grid[i + x][j + y]) < 9 and not ((i + x, j + y) in precursors):
+            if (grid[i + x][j + y]) < 9 and (i + x, j + y) not in precursors:
                 basin += get_basin(i + x, j + y, grid, precursors)
 
     return basin

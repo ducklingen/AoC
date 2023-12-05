@@ -1,5 +1,6 @@
-from adventofcode.helpers import AoCHelper
 from math import ceil
+
+from adventofcode.helpers import AoCHelper
 
 input = AoCHelper.read_input_lines("day3/input1.txt")
 

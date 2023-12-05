@@ -1,4 +1,5 @@
 import math
+
 from helpers import AoCHelper
 
 input = AoCHelper.read_input_lines("day5/day5input1.txt")

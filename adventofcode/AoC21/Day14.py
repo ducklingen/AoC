@@ -1,7 +1,7 @@
+import time
 from collections import Counter
 
 from helpers import AoCHelper
-import time
 
 start_time = time.time()
 

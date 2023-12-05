@@ -9,7 +9,7 @@ def sumInJson(jsonstring):
     isJson = True
     try:
         json_object = json.loads(str(jsonstring).replace("'", '"'))
-    except Exception as e:
+    except Exception:
         json_object = jsonstring
         isJson = False
 

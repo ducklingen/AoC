@@ -1,5 +1,6 @@
-from adventofcode.helpers import AoCHelper
 from collections import Counter
+
+from adventofcode.helpers import AoCHelper
 
 input = AoCHelper.read_input_lines("Day4/inputs1.txt")
 

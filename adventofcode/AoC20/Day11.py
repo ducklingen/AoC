@@ -1,5 +1,6 @@
 import copy
 import sys
+
 from helpers.AoCHelper import *
 from helpers.GlobalVariables import *
 

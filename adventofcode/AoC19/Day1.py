@@ -1,4 +1,5 @@
 import math
+
 from adventofcode.helpers import AoCHelper
 
 

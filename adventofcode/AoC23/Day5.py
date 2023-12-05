@@ -1,7 +1,8 @@
-from adventofcode.helpers import AoCHelper
 import logging
-from math import ceil
 import sys
+from math import ceil
+
+from adventofcode.helpers import AoCHelper
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)

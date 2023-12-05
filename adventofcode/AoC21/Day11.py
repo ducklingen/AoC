@@ -1,7 +1,7 @@
 from itertools import product
 
-from helpers.GlobalVariables import all_directions
 from helpers import AoCHelper
+from helpers.GlobalVariables import all_directions
 
 input_lines = AoCHelper.read_input_lines("day11/input1.txt")
 grid = [list(map(int, l)) for l in input_lines]

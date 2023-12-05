@@ -1,5 +1,5 @@
-from itertools import combinations
 import sys
+
 from helpers.AoCHelper import *
 
 sys.setrecursionlimit(5000)

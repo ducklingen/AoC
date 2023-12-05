@@ -1,6 +1,7 @@
 from string import ascii_lowercase
+
 from helpers import AoCHelper
-from helpers.AoCHelper import prints, list_to_string, group_lines
+from helpers.AoCHelper import group_lines, list_to_string, prints
 
 input = AoCHelper.read_input_lines("day6/day6input1.txt")
 groups = group_lines(input)

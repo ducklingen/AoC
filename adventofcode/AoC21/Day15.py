@@ -1,8 +1,9 @@
-from helpers import AoCHelper
-from itertools import product
-from sys import maxsize
-from queue import PriorityQueue
 import time
+from itertools import product
+from queue import PriorityQueue
+from sys import maxsize
+
+from helpers import AoCHelper
 
 start_time = time.time()
 

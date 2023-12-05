@@ -1,11 +1,12 @@
-from adventofcode.helpers import AoCHelper
 import re
 from typing import Dict, List, Tuple
+
+from adventofcode.helpers import AoCHelper
 
 input = AoCHelper.read_input_lines("Day2/inputs1.txt")
 
 
-def parse_input(input: str) -> List[Tuple[int, Dict[str, List[int]]]]:
+def parse_input(input: list[str]) -> List[Tuple[int, Dict[str, List[int]]]]:
     games: List[Tuple[int, Dict[str, List[int]]]] = []
     for i in input:
         color_dict = {"green": [], "blue": [], "red": []}

@@ -1,4 +1,5 @@
 import math
+
 from helpers import AoCHelper
 from helpers.AoCHelper import prod
 

@@ -1,6 +1,7 @@
-from helpers import AoCHelper
-from sys import maxsize
 import time
+from sys import maxsize
+
+from helpers import AoCHelper
 
 start_time = time.time()
 

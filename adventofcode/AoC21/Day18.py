@@ -1,7 +1,7 @@
-import time
 import sys
-from helpers.AoCHelper import *
+import time
 
+from helpers.AoCHelper import *
 
 start_time = time.time()
 input_lines = read_input_lines("day18/test2.txt")
@@ -52,7 +52,7 @@ def explode_line(res):
         elif (
             is_integer(c)
             and level > 4
-            and re.search(",\d]", res[idx + 1 : idx + 4])
+            and re.search(r",\d]", res[idx + 1 : idx + 4])
         ):
             pair_idx = idx
         elif is_integer(c) and idx < pair_idx:

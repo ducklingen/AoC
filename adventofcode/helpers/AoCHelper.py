@@ -1,8 +1,8 @@
 import math
 import re
-from itertools import product
-from math import radians, sin, cos, ceil
 from functools import wraps
+from itertools import product
+from math import ceil, cos, radians, sin
 
 from adventofcode.helpers.GlobalVariables import all_directions
 

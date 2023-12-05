@@ -1,4 +1,5 @@
 import re
+
 from helpers import AoCHelper
 from helpers.AoCHelper import group_lines, list_to_string
 
@@ -36,10 +37,10 @@ def passportFieldValidator(key, value):
         return 2020 <= int(value) <= 2030
     elif key == "hgt":
         return (
-            re.search("^\d*cm$", value)
+            re.search(r"^\d*cm$", value)
             and 150 <= int(value.replace("cm", "")) <= 193
         ) or (
-            re.search("^\d*in$", value)
+            re.search(r"^\d*in$", value)
             and 59 <= int(value.replace("in", "")) <= 76
         )
     elif key == "hcl":
@@ -47,7 +48,7 @@ def passportFieldValidator(key, value):
     elif key == "ecl":
         return value in ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"]
     elif key == "pid":
-        return re.search("^\d{9}$", value)
+        return re.search(r"^\d{9}$", value)
     else:
         return True
 

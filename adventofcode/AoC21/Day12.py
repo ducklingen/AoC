@@ -1,5 +1,6 @@
-from helpers import AoCHelper
 import time
+
+from helpers import AoCHelper
 
 start_time = time.time()
 

@@ -1,7 +1,4 @@
-import copy
 import sys
-import math
-from itertools import combinations_with_replacement, permutations, product
 
 from helpers.AoCHelper import *
 from helpers.GlobalVariables import *

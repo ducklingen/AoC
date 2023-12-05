@@ -1,5 +1,5 @@
-import re
 import hashlib
+import re
 import time
 
 tic = time.perf_counter()
