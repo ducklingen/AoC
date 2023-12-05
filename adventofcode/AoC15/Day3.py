@@ -58,4 +58,4 @@ for idx, d in enumerate(routes[0]):
 
 part_two = len(set(houses))
 assert part_two == 2631
-prints(f"Part 2: {part_two}")
+print(f"Part 2: {part_two}")
