@@ -1,5 +1,10 @@
-from adventofcode.AoC23.Day3 import compute_part_one, compute_part_two, adjecent_number
 import pytest
+
+from adventofcode.AoC23.Day3 import (
+    adjecent_number,
+    compute_part_one,
+    compute_part_two,
+)
 
 
 @pytest.mark.parametrize(
@@ -32,7 +37,15 @@ def test_part_two(file, expected):
 
 @pytest.mark.parametrize(
     ("gp", "idx", "x", "expected"),
-    [(7, 3, "123", False), (63, 61, "123", True), (63, 62, "123", True)],
+    [
+        (63, 59, "123", False),
+        (63, 60, "123", True),
+        (63, 61, "123", True),
+        (63, 62, "123", True),
+        (63, 63, "123", True),
+        (63, 64, "123", True),
+        (63, 65, "123", False),
+    ],
 )
 def test_adjacent_number(gp, idx, x, expected):
     assert adjecent_number(gp, idx, x) == expected
