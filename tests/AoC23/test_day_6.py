@@ -15,7 +15,6 @@ from adventofcode.AoC23.Day6 import compute_part_one, compute_part_two
 def test_part_one(file, expected):
     result = compute_part_one(file)
     assert result == expected
-    logging.info(f"Day 6, 2023 Part 1: {result}")
 
 
 @pytest.mark.parametrize(
@@ -28,4 +27,3 @@ def test_part_one(file, expected):
 def test_part_two(file, expected):
     result = compute_part_two(file)
     assert result == expected
-    logging.info(f"Day 6, 2023 Part 2: {result}")
