@@ -19,5 +19,8 @@ for idx, c in enumerate(cards):
 
     counter += {idx + i + 1: counter[idx] for i in range(matches)}
 
-print(result)
-print(sum(counter.values()))
+assert result == 23847
+print(f"Part 1: {result}")
+result2 = sum(counter.values())
+assert result2 == 8570000
+print(f"Part 2: {result2}")

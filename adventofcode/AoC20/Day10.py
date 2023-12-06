@@ -1,6 +1,6 @@
 import sys
 
-from helpers.AoCHelper import *
+from adventofcode.helpers.AoCHelper import read_input_lines
 
 sys.setrecursionlimit(5000)
 

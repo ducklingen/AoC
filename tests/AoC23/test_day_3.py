@@ -1,5 +1,3 @@
-import logging
-
 import pytest
 
 from adventofcode.AoC23.Day3 import (

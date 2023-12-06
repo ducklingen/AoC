@@ -1,6 +1,8 @@
 import json
 
-inputlines = read_input_lines("day12/input1.txt")
+from adventofcode.helpers.AoCHelper import list_to_string, read_input_lines
+
+inputlines = read_input_lines("AoC15/Inputs/day12/input1.txt")
 
 # print(str(sum([sum([i for i in j]) for j in extract_numbers(inputlines)])))
 
@@ -46,12 +48,19 @@ def sumInJson(jsonstring):
     return res
 
 
-# print(sumInJson('["green", [ { "e": "green", "a": 77, "d": {}, "c": "yellow", "h": "red", "b": 144, "g": {}, "f": "orange", "i": "orange" }, 49, [ { "c": { "e": "violet", "a": -44, "d": 115, "c": 117, "h": 194, "b": { "e": -17, "a": 172, "d": "green", "c": 197, "h": 53, "b": 106, "g": "violet", "f": -10 }, "g": "red", "f": "orange" }, "a": -49, "b": [ "violet", "orange", "blue" ] } ], "green" ]]'))
+# print(sumInJson('["green", [ { "e": "green", "a": 77, "d": {}, "c": "yellow",
+# "h": "red", "b": 144, "g": {}, "f": "orange", "i": "orange" }, 49, [ { "c":
+# { "e": "violet", "a": -44, "d": 115, "c": 117, "h": 194, "b": { "e": -17, "a":
+#  172, "d": "green", "c": 197, "h": 53, "b": 106, "g": "violet", "f": -10 }, "
+# g": "red", "f": "orange" }, "a": -49, "b": [ "violet", "orange", "blue" ] } ]
+# , "green" ]]'))
 # print(sumInJson('[1,2,3]'))
 # print(sumInJson('[1,{"c":"red","b":2},3]'))
 # print(sumInJson('{"d":"red","e":[1,2,3,4],"f":5}'))
 # print(sumInJson('[1,"red",5]'))
 
-sumOfIntegers = sumInJson(list_to_string(read_input_lines("day12/input1.txt")))
+sumOfIntegers = sumInJson(
+    list_to_string(read_input_lines("AoC15/Inputs/day12/input1.txt"))
+)
 
 print(sumOfIntegers)

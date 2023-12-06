@@ -1,7 +1,10 @@
 import sys
 
-from helpers.AoCHelper import *
-from helpers.GlobalVariables import *
+from adventofcode.helpers.AoCHelper import (
+    extract_numbers_from_line,
+    get_all_combinations,
+    read_input_lines,
+)
 
 sys.setrecursionlimit(5000)
 

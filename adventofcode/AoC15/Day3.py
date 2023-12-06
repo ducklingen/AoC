@@ -1,7 +1,12 @@
+from adventofcode.helpers.AoCHelper import read_input_lines
+
 routes = read_input_lines("day3/input1.txt")
 
 
 class Santa:
+
+    """Santa object."""
+
     x = 0
     y = 0
 

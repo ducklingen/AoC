@@ -1,6 +1,6 @@
 from itertools import permutations
 
-from adventofcode.helpers import AoCHelper
+from adventofcode.helpers import AoCHelper, IntcodeComputer
 
 
 def runDay7Program(input1, input2):

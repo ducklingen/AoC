@@ -1,3 +1,10 @@
+import re
+
+from adventofcode.helpers.AoCHelper import (
+    extract_numbers_from_line,
+    read_input_lines,
+)
+
 instructions = read_input_lines("day6/input1.txt")
 
 grid = [[0 for i in range(1000)] for j in range(1000)]

@@ -16,7 +16,7 @@ for idx, j in enumerate(cd_lines[:-1]):
 
     # if input[j + 1] == '$ ls' and dir_name not in contents.keys():
     contents[dir_name] = [
-        l for l in input[j + 2 : cd_lines[idx + 1]] if l != "$ cd .."
+        line for line in input[j + 2 : cd_lines[idx + 1]] if line != "$ cd .."
     ]
 
 
@@ -26,13 +26,13 @@ dir_names.reverse()
 
 def print_contents(contents, tab, dir):
     for c in contents[dir]:
-        f, l = c.split()
+        f, line = c.split()
 
         if AoCHelper.is_integer(f):
             print(tab * " " + " - " + c)
         else:
-            print(tab * " " + " - " + l + "/")
-            print_contents(contents, tab + 2, l)
+            print(tab * " " + " - " + line + "/")
+            print_contents(contents, tab + 2, line)
 
 
 # print('/')
@@ -43,12 +43,12 @@ def build_file_structure(contents, dir):
     dir_cont = {}
 
     for c in contents[dir]:
-        f, l = c.split()
+        f, line = c.split()
 
         if AoCHelper.is_integer(f):
-            dir_cont[l] = f
+            dir_cont[line] = f
         else:
-            dir_cont[l] = build_file_structure(contents, l)
+            dir_cont[line] = build_file_structure(contents, line)
 
     return dir_cont
 

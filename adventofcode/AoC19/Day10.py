@@ -96,7 +96,6 @@ def countNumberOfVisibleItemsFromAsteroid(asteroid, asteroids):
                     ) in asteroids:
                         result = result + 1
 
-                        # print(str(asteroid) + " can see " + str((int(asteroid[0]) + p * i, int(asteroid[1]) + p * j)))
                         break
 
     return result
@@ -126,6 +125,3 @@ print(asteroidChosen)
 print(numberOfDetectableItems)
 
 shootAsteroids(asteroidChosen, asteroids)
-
-# for a in asteroids:
-#     print("The slope from " + str(asteroidChosen) + " to " + str(a) + " is " + str(calculateSlope(asteroidChosen, a)))

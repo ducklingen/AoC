@@ -1,5 +1,3 @@
-import logging
-
 import pytest
 
 from adventofcode.AoC23.Day6 import compute_part_one, compute_part_two

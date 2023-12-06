@@ -5,8 +5,8 @@ a = {}
 
 A = ""
 with open("leaderboard.json", "r", encoding="utf-8") as f:
-    for l in f:
-        A += l
+    for line in f:
+        A += line
 a = eval(A)
 
 days = [datetime(2020, 12, i, 6) for i in range(1, 26)]

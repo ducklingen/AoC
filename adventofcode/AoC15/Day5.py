@@ -1,5 +1,7 @@
 import re
 
+from adventofcode.helpers.AoCHelper import read_input_lines
+
 input = read_input_lines("day5/input1.txt")
 niceStrings = 0
 niceStrings2 = 0

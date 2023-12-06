@@ -1,7 +1,13 @@
+import math
+import re
 import sys
 import time
 
-from helpers.AoCHelper import *
+from adventofcode.helpers.AoCHelper import (
+    extract_numbers_from_line,
+    is_integer,
+    read_input_lines,
+)
 
 start_time = time.time()
 input_lines = read_input_lines("day18/test2.txt")
@@ -105,7 +111,8 @@ def process_result(line):
 # #
 # # print(final_sum)
 
-# res = explode_line('[[[[4,0],[5,4]],[[7,7],[6,0]]],[[7,[5,5]],[[5,7],[[0,[5,6]],[8,8]]]]]')
+# res = explode_line('[[[[4,0],[5,4]],[[7,7],[6,0]]],[[7,[5,5]]
+# ,[[5,7],[[0,[5,6]],[8,8]]]]]')
 
 res = process_result(
     "[[[[0,[4,5]],[0,0]],[[[4,5],[2,6]],[9,5]]],[7,[[[3,7],[4,3]],[[6,3],[8,8]]]]]"

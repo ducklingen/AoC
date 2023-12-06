@@ -1,6 +1,8 @@
 import re
 
-inputlines = read_input_lines("day8/test1.txt")
+from adventofcode.helpers.AoCHelper import read_input_lines
+
+inputlines = read_input_lines("AoC15/Inputs/day8/test1.txt")
 
 byteDiff = 0
 

@@ -51,7 +51,8 @@ def oreNeededFor(type, amount):
         oreNeeded = 0
 
         for reagent in recipes[type][1]:
-            # print("Use " + str(recipeMultiple*int(reagent[0])) + " batches of " + reagent[1] + " for " + str(amount) + " batches of " + type)
+            # print("Use " + str(recipeMultiple*int(reagent[0])) + " batches of
+            # " + reagent[1] + " for " + str(amount) + " batches of " + type)
             oreNeeded = oreNeeded + oreNeededFor(
                 reagent[1], recipeMultiple * int(reagent[0])
             )

@@ -1,7 +1,7 @@
 import sys
 
-from helpers.AoCHelper import *
-from helpers.GlobalVariables import *
+from adventofcode.helpers.AoCHelper import read_input_lines, rotate
+from adventofcode.helpers.GlobalVariables import cardinal_directions_dict
 
 sys.setrecursionlimit(5000)
 

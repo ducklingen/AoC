@@ -1,6 +1,8 @@
 import re
 
-operations = read_input_lines("day7/input1.txt")
+from adventofcode.helpers.AoCHelper import read_input_lines
+
+operations = read_input_lines("AoC15/Inputs/day7/input1.txt")
 
 wires = {}
 
@@ -50,10 +52,8 @@ def runCircuit(wires, operations):
                 if wire in wires.keys():
                     continue
                 wires[wire] = calculateInput(input, wires)
-                # print("Completed operation: " + operation)
-            except:
-                something = 0
-                # print("Skipping operation: " + operation)
+            except KeyError:
+                pass
 
     return wires
 

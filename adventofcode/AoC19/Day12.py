@@ -94,7 +94,8 @@ for k in range(3):
 print(lcm(lcm(periods[0], periods[1]), periods[2]))
 
 # def calculateEnergiOfMoon(moon):
-#     return (abs(moon[0][0])+abs(moon[0][1])+abs(moon[0][2]))*(abs(moon[1][0])+abs(moon[1][1])+abs(moon[1][2]))
+#     return (abs(moon[0][0])+abs(moon[0][1])+
+#           abs(moon[0][2]))*(abs(moon[1][0])+abs(moon[1][1])+abs(moon[1][2]))
 #
 # for i in range(1000):
 #     moons = performStep(moons)

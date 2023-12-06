@@ -9,7 +9,7 @@ start_time = time.time()
 
 input_lines = AoCHelper.read_input_lines("day15/input1.txt")
 
-easy_grid = [list(map(int, l)) for l in input_lines]
+easy_grid = [list(map(int, line)) for line in input_lines]
 
 hard_grid = []
 

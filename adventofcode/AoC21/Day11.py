@@ -4,7 +4,7 @@ from helpers import AoCHelper
 from helpers.GlobalVariables import all_directions
 
 input_lines = AoCHelper.read_input_lines("day11/input1.txt")
-grid = [list(map(int, l)) for l in input_lines]
+grid = [list(map(int, line)) for line in input_lines]
 
 step = 0
 flashes = 0

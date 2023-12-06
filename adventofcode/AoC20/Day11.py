@@ -1,8 +1,8 @@
 import copy
 import sys
 
-from helpers.AoCHelper import *
-from helpers.GlobalVariables import *
+from adventofcode.helpers.AoCHelper import get_neighbours, read_input_lines
+from adventofcode.helpers.GlobalVariables import all_directions
 
 sys.setrecursionlimit(5000)
 

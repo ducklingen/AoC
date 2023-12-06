@@ -5,6 +5,9 @@ numbers = AoCHelper.extract_numbers_from_line(input[0])
 
 
 class BingoSheet:
+
+    """Class representing af bingo sheet."""
+
     status = []
     sheet = []
     sheet_number = 0

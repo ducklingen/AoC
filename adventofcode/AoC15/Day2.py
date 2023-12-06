@@ -6,21 +6,21 @@ from adventofcode.helpers.AoCHelper import (
 )
 
 input = [
-    extract_numbers_from_line(l)
-    for l in read_input_lines("day2/day2input1.txt")
+    extract_numbers_from_line(line)
+    for line in read_input_lines("AoC15/Inputs/day2/day2input1.txt")
 ]
 
 paperNeed = 0
 ribbonNeed = 0
 
-for l, w, h in input:
-    s1 = l * w
+for line, w, h in input:
+    s1 = line * w
     s2 = w * h
-    s3 = h * l
+    s3 = h * line
 
     paperNeed += 2 * (s1 + s2 + s3) + min([s1, s2, s3])
-    ribbonNeed += l * w * h + 2 * min(
-        a + b for a, b in combinations([l, w, h], 2)
+    ribbonNeed += line * w * h + 2 * min(
+        a + b for a, b in combinations([line, w, h], 2)
     )
 
 assert paperNeed == 1588178

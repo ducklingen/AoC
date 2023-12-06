@@ -1,4 +1,7 @@
-from helpers.AoCHelper import *
+from adventofcode.helpers.AoCHelper import (
+    extract_numbers_from_line,
+    read_input_lines,
+)
 
 inputlines = read_input_lines("day8/day8input1.txt")
 

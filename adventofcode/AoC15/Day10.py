@@ -1,3 +1,5 @@
+from adventofcode.helpers.AoCHelper import list_to_string
+
 sequence = "3113322113"
 
 
@@ -23,5 +25,5 @@ def splitSequence(seq):
 for i in range(50):
     splits = splitSequence(sequence)
     sequence = list_to_string([str(len(s)) + s[0] for s in splits])
-    print(str(i + 1) + ": " + sequence)
-    print(str(i + 1) + ": " + str(len(sequence)))
+
+print(len(sequence))

@@ -1,6 +1,8 @@
 from itertools import permutations
 
-inputlines = read_input_lines("day9/input1.txt")
+from adventofcode.helpers.AoCHelper import read_input_lines
+
+inputlines = read_input_lines("AoC15/Inputs/day9/input1.txt")
 
 cities = set([])
 routes = {}

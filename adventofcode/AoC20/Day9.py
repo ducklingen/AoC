@@ -1,6 +1,6 @@
 from itertools import combinations
 
-from helpers.AoCHelper import *
+from adventofcode.helpers.AoCHelper import read_input_lines
 
 inputlines = list(map(int, read_input_lines("day9/day9input1.txt")))
 preambleLength = 25
