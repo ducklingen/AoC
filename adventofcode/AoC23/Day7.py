@@ -24,21 +24,16 @@ cards_ranking = {
 
 def parse_hands(filename: str) -> Dict[str, str]:
     lines = AoCHelper.read_input_lines(f"AoC23/Inputs/Day7/{filename}.txt")
-    players = {}
-    for line in lines:
-        hand, bet = line.split()
-        players[hand] = bet
+    players = {hand: bet for hand, bet in map(lambda x: x.split(), lines)}
 
     return players
 
 
 def classify_hand(hand: str, part_two: bool = False) -> int:
     c = Counter(list(hand))
+    jokers = c["J"] * int(part_two)
     if part_two:
-        jokers = c["J"]
         del c["J"]
-    else:
-        jokers = 0
 
     if jokers == 5 or max(c.values()) + jokers == 5:
         return 7
@@ -90,22 +85,21 @@ def compare_two(hand1: str, hand2: str) -> int:
     return compare(hand1, hand2, True)
 
 
-def compute_one(filename):
+def compute(filename, compare_function):
     players = parse_hands(filename)
     hands = list(players.keys())
-    hands.sort(key=cmp_to_key(compare_one))
+    hands.sort(key=cmp_to_key(compare_function))
     return sum(
         [(idx + 1) * int(players[hand]) for idx, hand in enumerate(hands)]
     )
+
+
+def compute_one(filename):
+    return compute(filename, compare_one)
 
 
 def compute_two(filename):
-    players = parse_hands(filename)
-    hands = list(players.keys())
-    hands.sort(key=cmp_to_key(compare_two))
-    return sum(
-        [(idx + 1) * int(players[hand]) for idx, hand in enumerate(hands)]
-    )
+    return compute(filename, compare_two)
 
 
 if __name__ == "__main__":
