@@ -2,7 +2,7 @@ from collections import Counter
 
 from adventofcode.helpers import AoCHelper
 
-input = AoCHelper.read_input_lines("Day4/inputs1.txt")
+input = AoCHelper.read_input_lines("AoC23/Inputs/Day4/inputs1.txt")
 
 cards = [i[8:] for i in input]
 
@@ -17,8 +17,7 @@ for idx, c in enumerate(cards):
     if matches > 0:
         result += 2 ** (matches - 1)
 
-    for i in range(matches):
-        counter[idx + i + 1] += counter[idx]
+    counter += {idx + i + 1: counter[idx] for i in range(matches)}
 
 print(result)
 print(sum(counter.values()))

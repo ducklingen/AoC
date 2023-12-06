@@ -16,12 +16,10 @@ def compute_part_one(filename):
     input = AoCHelper.read_input_lines(f"AoC23/Inputs/Day6/{filename}.txt")
     times = AoCHelper.extract_numbers_from_line(input[0])
     records = AoCHelper.extract_numbers_from_line(input[1])
-    games = list(zip(times, records))
 
     result = 1
 
-    for g in games:
-        time, record = g
+    for time, record in zip(times, records):
         lower, upper = compute_borders(time, record)
 
         result *= upper - lower + 1
