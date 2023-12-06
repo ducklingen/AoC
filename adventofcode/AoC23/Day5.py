@@ -2,16 +2,20 @@ import logging
 import sys
 from math import ceil
 
-from adventofcode.helpers import AoCHelper
+from adventofcode.helpers.AoCHelper import (
+    extract_numbers_from_line,
+    group_lines,
+    read_input_lines,
+)
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-input = AoCHelper.read_input_lines("AoC23/Inputs/Day5/inputs.txt")
-initial_seeds = AoCHelper.extract_numbers_from_line(input[0])
+input = read_input_lines("AoC23/Inputs/Day5/inputs.txt")
+initial_seeds = extract_numbers_from_line(input[0])
 logging.info(initial_seeds)
 
-groups = AoCHelper.group_lines(input[2:])
+groups = group_lines(input[2:])
 
 
 def transform_positions_min(initial_positions, groups):
@@ -20,7 +24,7 @@ def transform_positions_min(initial_positions, groups):
         for g in groups:
             new_pos = s
             for t in g[1:]:
-                dest, src, rng = AoCHelper.extract_numbers_from_line(t)
+                dest, src, rng = extract_numbers_from_line(t)
 
                 if src <= s <= src + rng - 1:
                     new_pos = s + (dest - src)

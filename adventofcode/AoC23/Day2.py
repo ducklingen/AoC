@@ -1,9 +1,9 @@
 import re
 from typing import Dict, List, Tuple
 
-from adventofcode.helpers import AoCHelper
+from adventofcode.helpers.AoCHelper import read_input_lines
 
-input = AoCHelper.read_input_lines("Day2/inputs1.txt")
+input = read_input_lines("Day2/inputs1.txt")
 
 
 def parse_input(input: list[str]) -> List[Tuple[int, Dict[str, List[int]]]]:

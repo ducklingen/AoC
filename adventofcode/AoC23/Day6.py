@@ -1,7 +1,10 @@
 from math import ceil, floor, sqrt
 from typing import Tuple
 
-from adventofcode.helpers import AoCHelper
+from adventofcode.helpers.AoCHelper import (
+    extract_numbers_from_line,
+    read_input_lines,
+)
 
 
 def compute_borders(time, record) -> Tuple[int, int]:
@@ -13,9 +16,9 @@ def compute_borders(time, record) -> Tuple[int, int]:
 
 
 def compute_part_one(filename):
-    input = AoCHelper.read_input_lines(f"AoC23/Inputs/Day6/{filename}.txt")
-    times = AoCHelper.extract_numbers_from_line(input[0])
-    records = AoCHelper.extract_numbers_from_line(input[1])
+    input = read_input_lines(f"AoC23/Inputs/Day6/{filename}.txt")
+    times = extract_numbers_from_line(input[0])
+    records = extract_numbers_from_line(input[1])
 
     result = 1
 
@@ -28,12 +31,12 @@ def compute_part_one(filename):
 
 
 def compute_part_two(filename):
-    input = AoCHelper.read_input_lines(f"AoC23/Inputs/Day6/{filename}.txt")
+    input = read_input_lines(f"AoC23/Inputs/Day6/{filename}.txt")
     full_time = int(
-        "".join([str(t) for t in AoCHelper.extract_numbers_from_line(input[0])])
+        "".join([str(t) for t in extract_numbers_from_line(input[0])])
     )
     full_record = int(
-        "".join([str(r) for r in AoCHelper.extract_numbers_from_line(input[1])])
+        "".join([str(r) for r in extract_numbers_from_line(input[1])])
     )
 
     lower, upper = compute_borders(full_time, full_record)

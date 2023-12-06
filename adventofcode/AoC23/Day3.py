@@ -1,7 +1,11 @@
 import logging
 import re
 
-from adventofcode.helpers import AoCHelper
+from adventofcode.helpers.AoCHelper import (
+    get_neighbours,
+    prod,
+    read_input_lines,
+)
 
 
 def has_adjacent_symbols(x: int, y: int, len: int, engine) -> bool:
@@ -9,13 +13,13 @@ def has_adjacent_symbols(x: int, y: int, len: int, engine) -> bool:
     neighbours = []
 
     for i in range(len):
-        neighbours += AoCHelper.get_neighbours(x, y + i, engine)
+        neighbours += get_neighbours(x, y + i, engine)
 
     return set(neighbours) - digits != {"."}
 
 
 def compute_part_one(filename):
-    engine = AoCHelper.read_input_lines(f"AoC23/Inputs/Day3/{filename}.txt")
+    engine = read_input_lines(f"AoC23/Inputs/Day3/{filename}.txt")
     result = 0
     for row_id, row in enumerate(engine):
         pattern = r"([1-9]\d*)"
@@ -37,7 +41,7 @@ def adjecent_number(gp: int, idx: int, x: str) -> bool:
 
 
 def compute_part_two(filename):
-    engine = AoCHelper.read_input_lines(f"AoC23/Inputs/Day3/{filename}.txt")
+    engine = read_input_lines(f"AoC23/Inputs/Day3/{filename}.txt")
     result = 0
 
     for row_id, row in enumerate(engine):
@@ -79,11 +83,11 @@ def compute_part_two(filename):
             ]
 
             logging.debug(
-                f"Gear at position ({row_id}, {gp}) has adjecent "
+                f"Gear at position ({row_id}, {gp}) has adjcent "
                 f"numbers: {adjecent_numbers}"
             )
             if len(adjecent_numbers) == 2:
-                result += AoCHelper.prod(adjecent_numbers)
+                result += prod(adjecent_numbers)
 
     return result
 

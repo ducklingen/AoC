@@ -1,6 +1,6 @@
 import regex as re
 
-from adventofcode.helpers import AoCHelper
+from adventofcode.helpers.AoCHelper import read_input_lines
 
 
 def combine_ends(numbers: list[int]) -> int:
@@ -8,7 +8,7 @@ def combine_ends(numbers: list[int]) -> int:
 
 
 def compute_part_one(filename):
-    lines = AoCHelper.read_input_lines(f"AoC23/Inputs/Day1/{filename}.txt")
+    lines = read_input_lines(f"AoC23/Inputs/Day1/{filename}.txt")
 
     result = 0
     for line in lines:
@@ -31,7 +31,7 @@ def compute_part_two(filename):
         "nine": 9,
     }
 
-    lines = AoCHelper.read_input_lines(f"AoC23/Inputs/Day1/{filename}.txt")
+    lines = read_input_lines(f"AoC23/Inputs/Day1/{filename}.txt")
 
     result = 0
     for line in lines:

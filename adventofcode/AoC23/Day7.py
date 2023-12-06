@@ -3,7 +3,7 @@ from collections import Counter
 from functools import cmp_to_key
 from typing import Dict
 
-from adventofcode.helpers import AoCHelper
+from adventofcode.helpers.AoCHelper import read_input_lines
 
 cards_ranking = {
     "2": 2,
@@ -23,7 +23,7 @@ cards_ranking = {
 
 
 def parse_hands(filename: str) -> Dict[str, str]:
-    lines = AoCHelper.read_input_lines(f"AoC23/Inputs/Day7/{filename}.txt")
+    lines = read_input_lines(f"AoC23/Inputs/Day7/{filename}.txt")
     players = {hand: bet for hand, bet in map(lambda x: x.split(), lines)}
 
     return players

@@ -1,18 +1,21 @@
 from collections import Counter
 
-from adventofcode.helpers import AoCHelper
+from adventofcode.helpers.AoCHelper import (
+    extract_numbers_from_line,
+    read_input_lines,
+)
 
 
 def identify_matches(card: str) -> int:
     winners, mine = card.split("|")
-    winning_numbers = AoCHelper.extract_numbers_from_line(winners)
-    my_numbers = AoCHelper.extract_numbers_from_line(mine)
+    winning_numbers = extract_numbers_from_line(winners)
+    my_numbers = extract_numbers_from_line(mine)
 
     return len(set(winning_numbers).intersection(my_numbers))
 
 
 def parse_cards(filename: str) -> list[str]:
-    input = AoCHelper.read_input_lines(f"AoC23/Inputs/Day4/{filename}.txt")
+    input = read_input_lines(f"AoC23/Inputs/Day4/{filename}.txt")
 
     return [i[8:] for i in input]
 
