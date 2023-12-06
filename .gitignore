@@ -81,3 +81,4 @@ fabric.properties
 # My files
 helpers/__init__.py
 helpers/__pycache/
+**/*.pyc
