@@ -1,6 +1,6 @@
 import pytest
 
-from adventofcode.AoC23.Day10 import compute_one
+from adventofcode.AoC23.Day10 import compute_one, compute_two
 
 
 @pytest.mark.parametrize(
@@ -9,3 +9,11 @@ from adventofcode.AoC23.Day10 import compute_one
 )
 def test_part_one(filename, start_pipe, expected):
     assert compute_one(filename, start_pipe) == expected
+
+
+@pytest.mark.parametrize(
+    ("filename", "start_pipe", "expected"),
+    [("test3", "F", 4), ("test4", "F", 8), ("inputs", "L", 400)],
+)
+def test_part_two(filename, start_pipe, expected):
+    assert compute_two(filename, start_pipe) == expected
