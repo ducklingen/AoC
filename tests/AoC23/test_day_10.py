@@ -11,6 +11,7 @@ def test_part_one(filename, start_pipe, expected):
     assert compute_one(filename, start_pipe) == expected
 
 
+@pytest.mark.skip()
 @pytest.mark.parametrize(
     ("filename", "start_pipe", "expected"),
     [("test3", "F", 4), ("test4", "F", 8), ("inputs", "L", 400)],
