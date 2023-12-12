@@ -77,25 +77,34 @@ def compute_two(filename, start_pipe):
         for j in range(len(grid[0])):
             if (i, j) in [(x, y) for (_, x, y) in pipe]:
                 filtered_grid[i][j] = grid[i][j]
+            elif grid[i][j] == "S":
+                filtered_grid[i][j] = start_pipe
             else:
                 filtered_grid[i][j] = "."
 
-    print(filtered_grid)
+    string_grid = ["".join(l) for l in filtered_grid]
+    for i in string_grid:
+        print(i)
+
+    # print(filtered_grid)
     enclosed_area = 0
     pattern = r"^(L[-]*7)|^(F[-]*J)"
-    for line in filtered_grid:
-        line = "".join(line)
-        print(line)
+    for line in string_grid:
         enclosed = False
+        enclosed_in_line = 0
         for idx, char in enumerate(line):
             if char == "." and enclosed:
-                print(f"Adding area at position {idx}")
-                enclosed_area += 1
+                # print(f"Adding area at position {idx}")
+                enclosed_in_line += 1
             if char == "|" or re.match(pattern, line[idx:]):
-                print(
-                    f"Moving inside/outside at position {idx} with value {char}"
-                )
+                # print(
+                #     f"Moving inside/outside at position {idx} with value {char}"
+                # )
                 enclosed = not enclosed
+
+        enclosed_area += enclosed_in_line
+        if enclosed_in_line > 0:
+            print(f"Found {enclosed_in_line} enclosed areas in line {line}")
 
     return enclosed_area
 
