@@ -13,7 +13,7 @@ def test_part_one(filename, start_pipe, expected):
 
 @pytest.mark.parametrize(
     ("filename", "start_pipe", "expected"),
-    [("test3", "F", 4), ("test4", "F", 8), ("inputs", "L", 400)],
+    [("test3", "F", 4), ("test4", "F", 8), ("inputs", "L", 527)],
 )
 def test_part_two(filename, start_pipe, expected):
     assert compute_two(filename, start_pipe) == expected
