@@ -40,6 +40,16 @@ def compute_pipe(grid, x, y, start_pipe):
     return pipe
 
 
+def remove_unused_parts(grid, start_x, start_y, pipe, start_pipe):
+    filtered_grid = [
+        ["." for _ in range(len(grid[0]))] for _ in range(len(grid))
+    ]
+    for type, x, y in pipe:
+        filtered_grid[x][y] = type
+    filtered_grid[start_x][start_y] = start_pipe
+    return ["".join(list) for list in filtered_grid]
+
+
 def compute_one(filename, start_pipe):
     grid = read_input_lines(f"AoC23/Inputs/Day10/{filename}.txt")
     start_x, start_y = locate_start(grid)
@@ -55,17 +65,9 @@ def compute_two(filename, start_pipe):
     start_x, start_y = locate_start(grid)
     pipe = compute_pipe(grid, start_x, start_y, start_pipe)
 
-    filtered_grid = [
-        ["." for _ in range(len(grid[0]))] for _ in range(len(grid))
-    ]
-    for type, x, y in pipe:
-        filtered_grid[x][y] = type
-    filtered_grid[start_x][start_y] = start_pipe
-    string_grid = ["".join(list) for list in filtered_grid]
-
     enclosed_area = 0
     pattern = r"^(L[-]*7)|^(F[-]*J)"
-    for line in string_grid:
+    for line in remove_unused_parts(grid, start_x, start_y, pipe, start_pipe):
         enclosed = False
         enclosed_in_line = 0
         for idx, char in enumerate(line):
