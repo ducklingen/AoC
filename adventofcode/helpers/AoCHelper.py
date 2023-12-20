@@ -99,6 +99,48 @@ def get_neighbours(
     return neighbours
 
 
+def get_neighbour_coordinates(
+    i,
+    j,
+    grid,
+    directions=all_directions,
+    immediate_neighbour=True,
+    characters_to_skip=[],
+):
+    neighbours = []
+
+    for x, y in directions:
+        if (
+            immediate_neighbour
+            and 0 <= i + x < len(grid)
+            and 0 <= j + y < len(grid[0])
+        ):
+            neighbours.append((i + x, j + y))
+        else:
+            neighbours.append(
+                get_first_coordinate_in_direction(
+                    i, j, grid, x, y, characters_to_skip
+                )
+            )
+
+    return [n for n in neighbours if n is not None]
+
+
+def get_first_coordinate_in_direction(
+    i, j, grid, i_increment, j_increment, characters_to_skip
+):
+    while 0 <= i + i_increment < len(grid) and 0 <= j + j_increment < len(
+        grid[0]
+    ):
+        if grid[i + i_increment][j + j_increment] not in characters_to_skip:
+            return (i + i_increment, j + j_increment)
+        else:
+            i += i_increment
+            j += j_increment
+
+    return None
+
+
 def get_first_in_direction(
     i, j, grid, i_increment, j_increment, characters_to_skip
 ):
