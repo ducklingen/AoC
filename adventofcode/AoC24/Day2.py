@@ -26,9 +26,18 @@ def safe_report(report: list[int]) -> bool:
 
     return True
 
+def safe_report_two(report: list[int]) -> bool:
+    for i in range(len(report)):
+        dampened_report = report.copy()
+        del dampened_report[i]
+        if safe_report(dampened_report):
+            return True
+
+    return False
+
 for i in input_lines:
     report = extract_numbers_from_line((i))
-    safe += safe_report(report)
+    safe += safe_report_two(report)
 
 
 print(safe)
