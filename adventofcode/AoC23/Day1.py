@@ -1,14 +1,14 @@
 import regex as re
-
+from pathlib import Path
 from adventofcode.helpers.AoCHelper import read_input_lines
 
 
 def combine_ends(numbers: list[int]) -> int:
     return 10 * numbers[0] + numbers[-1]
 
-
+path = Path("AoC23")
 def compute_part_one(filename):
-    lines = read_input_lines(f"AoC23/Inputs/Day1/{filename}.txt")
+    lines = read_input_lines(path / "Inputs" / "Day1" /f"{filename}.txt")
 
     result = 0
     for line in lines:

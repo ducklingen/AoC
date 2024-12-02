@@ -5,13 +5,14 @@ from itertools import product
 from math import ceil, cos, radians, sin
 
 from adventofcode.helpers.GlobalVariables import all_directions
-
+from pathlib import Path
 
 def read_input_lines(filename, linebreaks=False):
+    path = Path("C:\Projects\AdventOfCode\\adventofcode") / filename
     if linebreaks:
-        return [line for line in open("adventofcode/" + filename)]
+        return [line for line in path.open()]
     else:
-        return [line.rstrip("\n") for line in open("adventofcode/" + filename)]
+        return [line.rstrip("\n") for line in path.open()]
 
 
 def read_input_comma_line(filename):

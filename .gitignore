@@ -82,4 +82,4 @@ fabric.properties
 adventofcode/helpers/__init__.py
 adventofcode/helpers/__pycache__/
 adventofcode/__pycache__
-**/*.pyc
+**/**.pyc
