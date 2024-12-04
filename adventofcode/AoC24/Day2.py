@@ -1,6 +1,10 @@
-from adventofcode.helpers.AoCHelper import read_input_lines, extract_numbers_from_line
 from pathlib import Path
-from collections import Counter
+
+from adventofcode.helpers.AoCHelper import (
+    extract_numbers_from_line,
+    read_input_lines,
+)
+
 path = Path("AoC24")
 
 cwd = Path.cwd()
@@ -9,6 +13,7 @@ print(cwd)
 input_lines = read_input_lines(path / "Inputs" / "Day2" / "input.txt")
 
 safe = 0
+
 
 def safe_report(report: list[int]) -> bool:
     asc_report = report.copy()
@@ -21,10 +26,11 @@ def safe_report(report: list[int]) -> bool:
         return False
 
     for j in range(len(report) - 1):
-        if not (0 < abs(report[j]-report[j+1]) < 4):
+        if not (0 < abs(report[j] - report[j + 1]) < 4):
             return False
 
     return True
+
 
 def safe_report_two(report: list[int]) -> bool:
     for i in range(len(report)):
@@ -34,6 +40,7 @@ def safe_report_two(report: list[int]) -> bool:
             return True
 
     return False
+
 
 for i in input_lines:
     report = extract_numbers_from_line((i))

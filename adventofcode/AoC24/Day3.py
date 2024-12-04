@@ -39,10 +39,10 @@ def solve_two(input_file: str) -> int:
 
 
 if __name__ == "__main__":
-    res = solve_one(INPUT_FOLDER_PATH / "inputs.txt")
+    res = solve_one(INPUT_FOLDER_PATH / "input.txt")
     assert res == 183669043, f"Test failed: got {res}"
     print(f"Part 1: {res}")
 
-    res = solve_two(INPUT_FOLDER_PATH / "inputs.txt")
+    res = solve_two(INPUT_FOLDER_PATH / "input.txt")
     assert res == 59097164, f"Test failed: got {res}"
     print(f"Part 2: {res}")

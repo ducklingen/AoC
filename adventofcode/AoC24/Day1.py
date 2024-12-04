@@ -3,35 +3,45 @@ from pathlib import Path
 
 from adventofcode.helpers.AoCHelper import read_input_lines
 
-path = Path("AoC24")
+path = Path("AoC24") / "Inputs" / "Day1"
 
-cwd = Path.cwd()
-print(cwd)
 
-input_lines = read_input_lines(path / "Inputs" / "Day1" / "input.txt")
+def parse_input(lines: list[str]) -> tuple[list[int], list[int]]:
+    left = []
+    right = []
 
-left = []
-right = []
+    for i in lines:
+        l, r = i.split()  # noqa: E741
+        left.append(int(l))
+        right.append(int(r))
 
-for i in input_lines:
-    l, r = i.split()
-    left.append(int(l))
-    right.append(int(r))
+    return left, right
 
-left.sort()
-right.sort()
 
-res = 0
+def solve_one(input_file: str) -> int:
+    input_lines = read_input_lines(path / input_file)
+    left, right = parse_input(input_lines)
 
-for l, r in zip(left, right):
-    res += abs(r - l)
+    left.sort()
+    right.sort()
 
-print(res)
+    return sum(abs(l - r) for l, r in zip(left, right))  # noqa: E741
 
-c = Counter(right)
 
-res = 0
-for i in left:
-    res += i * c[i]
+def solve_two(input_file: str) -> int:
+    input_lines = read_input_lines(path / input_file)
+    left, right = parse_input(input_lines)
 
-print(res)
+    c = Counter(right)
+
+    return sum(i * c[i] for i in left)
+
+
+if __name__ == "__main__":
+    res = solve_one("input.txt")
+    assert res == 2742123, f"Test failed: got {res}"
+    print(f"Part 1: {res}")
+
+    res = solve_two("input.txt")
+    assert res == 21328497, f"Test failed: got {res}"
+    print(f"Part 2: {res}")
