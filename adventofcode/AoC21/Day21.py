@@ -17,7 +17,7 @@ def play_easy(player_one_pos, player_two_pos):
     while player_one_score < 1000 and player_two_score < 1000:
         dice_sum = 0
 
-        for i in range(3):
+        for _ in range(3):
             dice_sum += dice_val
             dice_val = dice_val + 1 if dice_val < 100 else 1
 
@@ -28,7 +28,7 @@ def play_easy(player_one_pos, player_two_pos):
         if player_one_score < 1000:
             dice_sum = 0
 
-            for j in range(3):
+            for _ in range(3):
                 dice_sum += dice_val
                 dice_val = dice_val + 1 if dice_val < 100 else 1
 

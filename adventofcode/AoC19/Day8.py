@@ -28,7 +28,7 @@ for i in range(layerSize):
 
     pixelLayering = ""
 
-    for j, layer in enumerate(layers):
+    for layer in layers:
         pixelLayering = pixelLayering + layer[i]
 
         if layer.count("2") == 150:

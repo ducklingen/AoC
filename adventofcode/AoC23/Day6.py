@@ -1,5 +1,4 @@
 from math import ceil, floor, sqrt
-from typing import Tuple
 
 from adventofcode.helpers.AoCHelper import (
     extract_numbers_from_line,
@@ -7,7 +6,7 @@ from adventofcode.helpers.AoCHelper import (
 )
 
 
-def compute_borders(time, record) -> Tuple[int, int]:
+def compute_borders(time, record) -> tuple[int, int]:
     disc = time * time - 4 * (record + 1)
     lower = max(0, ceil((time - sqrt(disc)) / 2))
     upper = min(time, floor((time + sqrt(disc)) / 2))

@@ -4,6 +4,7 @@ from functools import wraps
 from itertools import product
 from math import ceil, cos, radians, sin
 from pathlib import Path
+from typing import Any
 
 from adventofcode.helpers.GlobalVariables import all_directions
 
@@ -82,8 +83,9 @@ def get_neighbours(
     grid,
     directions=all_directions,
     immediate_neighbour=True,
-    characters_to_skip=[],
+    characters_to_skip=None,
 ):
+    characters_to_skip = characters_to_skip or []
     neighbours = []
 
     for x, y in directions:
@@ -107,8 +109,9 @@ def get_neighbour_coordinates(
     grid,
     directions=all_directions,
     immediate_neighbour=True,
-    characters_to_skip=[],
+    characters_to_skip=None,
 ):
+    characters_to_skip = characters_to_skip or []
     neighbours = []
 
     for x, y in directions:
@@ -159,7 +162,7 @@ def get_first_in_direction(
 
 
 def turn_right(coordinates, degrees):
-    for turn in range(ceil(degrees / 90)):
+    for _ in range(ceil(degrees / 90)):
         coordinates = (coordinates[1], -coordinates[0])
 
     return coordinates
@@ -232,11 +235,11 @@ def to_hashable(*args, **kwargs):
     return tuple(to_hashable(arg) for arg in args)
 
 
-def memoize(f):
+def memoize(f: callable) -> callable:
     mem = {}
 
     @wraps(f)
-    def inner(*args, **kwargs):
+    def inner(*args: list, **kwargs: dict) -> Any:
         key = to_hashable(*args, **kwargs)
         if key in mem:
             return mem[key]
@@ -247,5 +250,5 @@ def memoize(f):
     return inner
 
 
-def intersection(lst1, lst2):
+def intersection(lst1: list, lst2: list) -> list:
     return list(set(lst1) & set(lst2))

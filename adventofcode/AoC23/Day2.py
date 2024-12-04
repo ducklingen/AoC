@@ -1,13 +1,12 @@
 import re
-from typing import Dict, List, Tuple
 
 from adventofcode.helpers.AoCHelper import read_input_lines
 
 input = read_input_lines("Day2/inputs1.txt")
 
 
-def parse_input(input: list[str]) -> List[Tuple[int, Dict[str, List[int]]]]:
-    games: List[Tuple[int, Dict[str, List[int]]]] = []
+def parse_input(input: list[str]) -> list[tuple[int, dict[str, list[int]]]]:
+    games: list[tuple[int, dict[str, list[int]]]] = []
     for i in input:
         color_dict = {"green": [], "blue": [], "red": []}
         game, rounds = i.split(":")
@@ -25,15 +24,15 @@ def parse_input(input: list[str]) -> List[Tuple[int, Dict[str, List[int]]]]:
 
 games = parse_input(input)
 result = result2 = 0
-for id, dict in games:
+for id, game in games:
     if (
-        max(dict["red"]) <= 12
-        and max(dict["green"]) <= 13
-        and max(dict["blue"]) <= 14
+        max(game["red"]) <= 12
+        and max(game["green"]) <= 13
+        and max(game["blue"]) <= 14
     ):
         result += id
 
-    result2 += max(dict["red"]) * max(dict["green"]) * max(dict["blue"])
+    result2 += max(game["red"]) * max(game["green"]) * max(game["blue"])
 
 assert result == 2716
 print(f"Part 1: {result}")

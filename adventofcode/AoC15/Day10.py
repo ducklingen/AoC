@@ -22,7 +22,7 @@ def splitSequence(seq):
     return list
 
 
-for i in range(50):
+for _ in range(50):
     splits = splitSequence(sequence)
     sequence = list_to_string([str(len(s)) + s[0] for s in splits])
 

@@ -23,7 +23,7 @@ def run_game(game_lenght, instructions, template):
     pair_counter = Counter({ins: template.count(ins) for ins in instructions})
     letter_counter = Counter(template)
 
-    for n in range(game_lenght):
+    for _ in range(game_lenght):
         letter_counter += {
             k: sum(
                 value

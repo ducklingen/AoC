@@ -4,7 +4,7 @@ from adventofcode.helpers import AoCHelper
 
 
 def calculate_mass(mass):
-    return math.floor((mass / 3)) - 2
+    return math.floor(mass / 3) - 2
 
 
 def calculate_fuel_need_v2(mass):

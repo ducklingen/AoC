@@ -34,6 +34,6 @@ def completePhase(input):
     return nextPhase
 
 
-for i in range(100):
+for _ in range(100):
     input = completePhase(input)
     print(input)

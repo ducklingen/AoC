@@ -76,7 +76,7 @@ monkeys = init_game(monkey_descriptions)
 divisor = math.prod([m[2] for m in monkeys])
 c = Counter()
 
-for i in range(10000):
+for _ in range(10000):
     for j in range(len(monkeys)):
         c[j] += monkey_turn(monkeys, j, 1, divisor)
 

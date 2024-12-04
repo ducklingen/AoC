@@ -25,12 +25,20 @@ line-length = 80
 line-length = 80
 lint.fixable = ["ALL"]
 lint.select = [
-    "D",  # pydocstyle
-    "F",  # pyflakes
-    "PT", # pytest
-    "E",  # pycodestyle
-    "W",  # pycodestyle
-    "I001", # isort
+    "B",    # Bugbear
+    "D",    # pydocstyle
+    "E",    # pycodestyle
+    "F",    # pyflakes
+    "FLY",  # flynt (no static string.join)
+    "I",    # isort
+    "ISC",  # Implicit string concatenation
+    "LOG",  # Logging
+    "PIE",  # Pie
+    "PT",   # pytest
+    "Q",    # Quotes
+    "TCH",  # Typecheck
+    "UP",   # Pyupgrade
+    "W",    # pycodestyle
 ]
 lint.ignore = [
     "D100",  # Missing docstring in public module
@@ -38,10 +46,14 @@ lint.ignore = [
     "D103",  # Missing docstring in public function
     "D104",  # Missing docstring in public package
     "D107",  # Missing docstring in `__init__` method
+    "D203",  # 1 blank line required before class docstring
     "D417",  # Missing argument description for *args, **kwargs
     "D211",
     "D213",
+    "ANN401",
 ]
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["ANN"]
 
 [tool.pytest.ini_options]
 log_cli = true

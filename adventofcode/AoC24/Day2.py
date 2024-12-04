@@ -43,7 +43,7 @@ def safe_report_two(report: list[int]) -> bool:
 
 
 for i in input_lines:
-    report = extract_numbers_from_line((i))
+    report = extract_numbers_from_line(i)
     safe += safe_report_two(report)
 
 

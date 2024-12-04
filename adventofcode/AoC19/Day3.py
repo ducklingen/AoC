@@ -14,22 +14,22 @@ def getPointsFromWire(wire):
         length = destination[1:]
 
         if direction == "R":
-            for j in range(int(length)):
+            for _ in range(int(length)):
                 points.append((x, y))
                 x = x + 1
 
         if direction == "U":
-            for j in range(int(length)):
+            for _ in range(int(length)):
                 points.append((x, y))
                 y = y + 1
 
         if direction == "L":
-            for j in range(int(length)):
+            for _ in range(int(length)):
                 points.append((x, y))
                 x = x - 1
 
         if direction == "D":
-            for j in range(int(length)):
+            for _ in range(int(length)):
                 points.append((x, y))
                 y = y - 1
 

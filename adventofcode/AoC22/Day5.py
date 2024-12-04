@@ -31,7 +31,7 @@ stacks = init(setup)
 for i in instructions:
     a, f, t = AoCHelper.extract_numbers_from_line(i)
 
-    for j in range(a):
+    for _ in range(a):
         e = stacks[f - 1].pop()
         stacks[t - 1].append(e)
 

@@ -9,7 +9,7 @@ def init_dictionary(input_line):
 
 
 def run_simulation(length, fish_dict):
-    for i in range(length):
+    for _ in range(length):
         new_fish_dict = {8: fish_dict[0], 6: fish_dict[0] + fish_dict[7]}
 
         for key in fish_dict:
