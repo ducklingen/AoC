@@ -9,21 +9,67 @@ from typing import Any
 from adventofcode.helpers.GlobalVariables import all_directions
 
 
-def read_input_lines(filename, linebreaks=False):
-    path = Path("adventofcode") / filename
+def read_input_lines(
+    file_path: str | Path, linebreaks: bool = False
+) -> list[str]:
+    """Read input lines from a file.
+
+    Parameters
+    ----------
+    file_path : str | Path
+        The path of the file to read from. Given relative to
+        the `adventofcode`-folder.
+    linebreaks : bool, optional
+        Whether to include linebreaks in the output, by default False
+
+    Returns
+    -------
+    list[str]
+        A list of lines from the file.
+
+    """
+    path = Path("adventofcode") / file_path
     if linebreaks:
         return [line for line in path.open()]
     else:
         return [line.rstrip("\n") for line in path.open()]
 
 
-def read_input_comma_line(filename):
-    lines = read_input_lines(filename)
+def read_input_comma_line(file_path: str | Path) -> list[str]:
+    """Read a single line from a file and split it by commas.
+
+    Parameters
+    ----------
+    file_path : str | Path
+        The path of the file to read from. Given relative to
+        the `adventofcode`-folder.
+
+    Returns
+    -------
+    list[str]
+        A list of strings split by commas.
+
+    """
+    lines = read_input_lines(file_path)
     return lines[0].split(",")
 
 
-def read_input_comma_lines(filename):
-    lines = read_input_lines(filename)
+def read_input_comma_lines(file_path: str | Path) -> list[list[str]]:
+    """Read lines from a file and split them by commas.
+
+    Parameters
+    ----------
+    file_path : str | Path
+        The path of the file to read from. Given relative to
+        the `adventofcode`-folder.
+
+    Returns
+    -------
+    list[list[str]]
+        A list of lists of strings split by commas.
+
+    """
+    lines = read_input_lines(file_path)
 
     lists = []
 
@@ -33,19 +79,47 @@ def read_input_comma_lines(filename):
     return lists
 
 
-def prints(i):
-    print(str(i))
+def prod(ints: list[int]) -> int:
+    """Multiply all integers in a list.
 
+    Analogous to the built-in `sum` function.
 
-def prod(ints):
+    Parameters
+    ----------
+    ints : list[int]
+        A list of integers to multiply.
+
+    Returns
+    -------
+    int
+        The product of all integers in the list.
+
+    """
     p = 1
     for i in ints:
         p *= int(i)
     return p
 
 
-def list_to_string(listofstrings, separator=""):
-    return separator.join(listofstrings)
+def list_to_string(strings: list[str], separator: str = ""):
+    """Convert a list of strings to a single string.
+
+    Wrapper around the built-in `join` function.
+
+    Parameters
+    ----------
+    strings : list[str]
+        A list of strings to join.
+    separator : str, optional
+        The separator to use when joining the strings, by default "".
+
+    Returns
+    -------
+    str
+        The combined string.
+
+    """
+    return separator.join(strings)
 
 
 def group_lines(inputlines):
@@ -64,7 +138,25 @@ def group_lines(inputlines):
     return groups
 
 
-def extract_numbers_from_line(line):
+def extract_numbers_from_line(line: str | list[str]) -> list[int]:
+    """Extract all integers from a string.
+
+    Catches both positive and negative integers, but not floats. Any float
+    appearing in the string will be converted into two integers, e.g.
+    "1.5" will be converted into [1, 5].
+
+    Parameters
+    ----------
+    line : str | list[str]
+        The string to extract integers from. If a list of strings is given,
+        the first string will be used.
+
+    Returns
+    -------
+    list[int]
+        A list of integers extracted from the string.
+
+    """
     pattern = r"((?<!\d)[+-]?)(\d+)"
 
     if isinstance(line, str):
@@ -78,13 +170,19 @@ def extract_numbers(lines):
 
 
 def get_neighbours(
-    i,
-    j,
-    grid,
-    directions=all_directions,
-    immediate_neighbour=True,
-    characters_to_skip=None,
+    i: int,
+    j: int,
+    grid: list[list],
+    directions: list[tuple[int, int]] = all_directions,
+    immediate_neighbour: bool = True,
+    characters_to_skip: list[str] = None,
 ):
+    if not immediate_neighbour and not characters_to_skip:
+        raise ValueError(
+            "If immediate_neighbour is False, characters_to_skip must be "
+            "provided."
+        )
+
     characters_to_skip = characters_to_skip or []
     neighbours = []
 
@@ -179,7 +277,24 @@ def rotate(coordinates, angle):
     return round(qx), round(qy)
 
 
-def lcm(a, b):
+def lcm(a: int, b: int) -> int:
+    """Calculate the least common multiple of two integers.
+
+    Analogous to the built-in `math.gcd` function.
+
+    Parameters
+    ----------
+    a : int
+        The first integer.
+    b : int
+        The second integer.
+
+    Returns
+    -------
+    int
+        The least common multiple of the two integers.
+
+    """
     return abs(a * b) // math.gcd(a, b)
 
 
@@ -204,10 +319,23 @@ def split_lines_into_chunks(lines, delimiters):
 
 
 def combine_lists(lists):
+    """Combine a list of lists into a single list.
+
+    Parameters
+    ----------
+    lists : list[list]
+        A list of lists to combine.
+
+    Returns
+    -------
+    list
+        A single list containing all elements from the input lists.
+
+    """
     return [x for list in lists for x in list]
 
 
-def is_integer(b):
+def is_integer(b: Any) -> bool:
     try:
         int(b)
         return True
@@ -255,6 +383,20 @@ def intersection(lst1: list, lst2: list) -> list:
 
 
 def is_list_sorted(lst: list[int]) -> bool:
+    """Check if a list is sorted in ascending or descending order.
+
+    Parameters
+    ----------
+    lst : list[int]
+        The list to check.
+
+    Returns
+    -------
+    bool
+        True if the list is sorted in ascending or descending order, False
+        otherwise.
+
+    """
     asc_report = lst.copy()
     asc_report.sort()
 
@@ -262,3 +404,45 @@ def is_list_sorted(lst: list[int]) -> bool:
     desc_report.sort(reverse=True)
 
     return lst in (asc_report, desc_report)
+
+
+def rotate_matrix(matrix: list[list[str]]) -> list[list[str]]:
+    """Rotate a matrix by 90 degrees clockwise.
+
+    Parameters
+    ----------
+    matrix : list[list[str]]
+        The matrix to rotate.
+
+    Returns
+    -------
+    list[list[str]]
+        The rotated matrix.
+
+    """
+    return [list(row) for row in zip(*matrix[::-1])]
+
+
+def get_diagonal(matrix: list[list[str]], index: int) -> list[str]:
+    """Get elements in diagonal row of a matrix.
+
+    Parameters
+    ----------
+    matrix : list[list[str]]
+        The matrix to get the diagonal from.
+    index : int
+        The index of the diagonal. 0 is the main diagonal, positive numbers are
+        above the main diagonal, negative numbers are below the main diagonal.
+
+    Returns
+    -------
+    list[str]
+        The elements in the diagonal row.
+
+    """
+    if index == 0:
+        return [matrix[i][i] for i in range(len(matrix))]
+    if index > 0:
+        return [matrix[i][i + index] for i in range(len(matrix) - index)]
+    if index < 0:
+        return [matrix[i - index][i] for i in range(len(matrix) + index)]

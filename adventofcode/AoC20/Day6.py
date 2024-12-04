@@ -1,9 +1,12 @@
 from string import ascii_lowercase
 
-from helpers import AoCHelper
-from helpers.AoCHelper import group_lines, list_to_string, prints
+from adventofcode.helpers.AoCHelper import (
+    group_lines,
+    list_to_string,
+    read_input_lines,
+)
 
-input = AoCHelper.read_input_lines("day6/day6input1.txt")
+input = read_input_lines("AoC20/Inputs/day6/day6input1.txt")
 groups = group_lines(input)
 
 numberOfYeses = sum([len(set(list_to_string(g))) for g in groups])
@@ -23,4 +26,4 @@ for c in ascii_lowercase:
         numberOfYeses += allYes
 
 assert numberOfYeses == 3360
-prints("Part 2: " + str(numberOfYeses))
+print(f"Part 2: {numberOfYeses}")

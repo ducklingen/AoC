@@ -3,55 +3,15 @@ import re
 from pathlib import Path
 
 from adventofcode.helpers.AoCHelper import (
+    get_diagonal,
     read_input_lines,
+    rotate_matrix,
 )
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
 
 INPUT_FOLDER_PATH = Path("AoC24") / "Inputs" / "Day4"
-
-
-def rotate_matrix(matrix: list[list[str]]) -> list[list[str]]:
-    """Rotate a matrix by 90 degrees clockwise.
-
-    Parameters
-    ----------
-    matrix : list[list[str]]
-        The matrix to rotate.
-
-    Returns
-    -------
-    list[list[str]]
-        The rotated matrix.
-
-    """
-    return [list(row) for row in zip(*matrix[::-1])]
-
-
-def get_diagonal(matrix: list[list[str]], index: int) -> list[str]:
-    """Get elements in diagonal row of a matrix.
-
-    Parameters
-    ----------
-    matrix : list[list[str]]
-        The matrix to get the diagonal from.
-    index : int
-        The index of the diagonal. 0 is the main diagonal, positive numbers are
-        above the main diagonal, negative numbers are below the main diagonal.
-
-    Returns
-    -------
-    list[str]
-        The elements in the diagonal row.
-
-    """
-    if index == 0:
-        return [matrix[i][i] for i in range(len(matrix))]
-    if index > 0:
-        return [matrix[i][i + index] for i in range(len(matrix) - index)]
-    if index < 0:
-        return [matrix[i - index][i] for i in range(len(matrix) + index)]
 
 
 def solve_one(input_file: str) -> int:
