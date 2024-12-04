@@ -1,6 +1,8 @@
-from adventofcode.helpers.AoCHelper import read_input_lines
-from pathlib import Path
 from collections import Counter
+from pathlib import Path
+
+from adventofcode.helpers.AoCHelper import read_input_lines
+
 path = Path("AoC24")
 
 cwd = Path.cwd()

@@ -3,12 +3,13 @@ import re
 from functools import wraps
 from itertools import product
 from math import ceil, cos, radians, sin
-
-from adventofcode.helpers.GlobalVariables import all_directions
 from pathlib import Path
 
+from adventofcode.helpers.GlobalVariables import all_directions
+
+
 def read_input_lines(filename, linebreaks=False):
-    path = Path("C:\Projects\AdventOfCode\\adventofcode") / filename
+    path = Path("adventofcode") / filename
     if linebreaks:
         return [line for line in path.open()]
     else:

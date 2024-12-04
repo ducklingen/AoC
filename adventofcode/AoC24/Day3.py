@@ -1,53 +1,48 @@
-from adventofcode.helpers.AoCHelper import read_input_lines, extract_numbers_from_line, prod
-from pathlib import Path
-from collections import Counter
 import re
-path = Path("AoC24")
-cwd = Path.cwd()
-print(cwd)
+from pathlib import Path
 
-input_lines = read_input_lines(path / "Inputs" / "Day3" / "inputs.txt")
+from adventofcode.helpers.AoCHelper import (
+    extract_numbers_from_line,
+    read_input_lines,
+)
 
-print(input_lines)
+INPUT_FOLDER_PATH = Path("AoC24") / "Inputs" / "Day3"
 
-pattern = r"(mul\(\-?\d{1,3},\-?\d{1,3}\))"
 
-cleaned_data = []
-for input_line in input_lines:
-    cleaned_data.extend([match.group() for match in re.finditer(pattern, input_line)])
+def extract_operations_from_line(line: str) -> list[str]:
+    pattern = r"(mul\(\-?\d{1,3},\-?\d{1,3}\))"
+    return [match.group() for match in re.finditer(pattern, line)]
 
-res = 0
-for d in cleaned_data:
-    print(d)
-    numbers = extract_numbers_from_line(d)
 
-    assert len(numbers) == 2
-    assert all(-1000 < x < 1000 for x in numbers)
+def perform_operation(operation: str) -> int:
+    numbers = extract_numbers_from_line(operation)
+    return numbers[0] * numbers[1]
 
-    res += numbers[0] * numbers[1]
 
-print(res)
+def solve_one(input_file: str) -> int:
+    input_line = read_input_lines(input_file)[0]
 
-input_line = read_input_lines(path / "Inputs" / "Day3" / "inputs.txt")[0]
+    cleaned_data = extract_operations_from_line(input_line)
+    return sum(perform_operation(op) for op in cleaned_data)
 
-cleaned_data = []
-dos = input_line.split("do()")
-for d in dos:
-    print(d)
-    if "don't()" in d:
-        do, *_ = d.split("don't()")
-    else:
-        do = d
-    cleaned_data.extend([match.group() for match in re.finditer(pattern, do)])
 
-res = 0
-for d in cleaned_data:
-    print(d)
-    numbers = extract_numbers_from_line(d)
+def solve_two(input_file: str) -> int:
+    input_line = read_input_lines(input_file)[0]
 
-    assert len(numbers) == 2
-    assert all(-1000 < x < 1000 for x in numbers)
+    cleaned_data = []
+    dos = input_line.split("do()")
+    for d in dos:
+        do = d.split("don't()")[0]
+        cleaned_data.extend(extract_operations_from_line(do))
 
-    res += numbers[0] * numbers[1]
+    return sum(perform_operation(op) for op in cleaned_data)
 
-print(res)
+
+if __name__ == "__main__":
+    res = solve_one(INPUT_FOLDER_PATH / "inputs.txt")
+    assert res == 183669043, f"Test failed: got {res}"
+    print(f"Part 1: {res}")
+
+    res = solve_two(INPUT_FOLDER_PATH / "inputs.txt")
+    assert res == 59097164, f"Test failed: got {res}"
+    print(f"Part 2: {res}")
