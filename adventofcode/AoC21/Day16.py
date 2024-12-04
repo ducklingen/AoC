@@ -12,7 +12,6 @@ ins = bin(int(input, 16))[2:].zfill(len(input) * 4)
 
 
 class Package:
-
     """Class representing a package."""
 
     version = 0

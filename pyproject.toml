@@ -6,13 +6,12 @@ authors = ["Andreas Midjord <midjord.andreas@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.10, <3.11"
-regex = "^2023.10.3"
+python = ">=3.10, <3.12"
+regex = "^2024.11.6"
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^7.4.3"
-ruff = "^0.1.7"
-black = "^23.11.0"
+pytest = "^8.3.4"
+ruff = "^0.8.0"
 pyright = "^1.1.338"
 
 [build-system]
@@ -24,8 +23,8 @@ line-length = 80
 
 [tool.ruff]
 line-length = 80
-fixable = ["ALL"]
-select = [
+lint.fixable = ["ALL"]
+lint.select = [
     "D",  # pydocstyle
     "F",  # pyflakes
     "PT", # pytest
@@ -33,7 +32,7 @@ select = [
     "W",  # pycodestyle
     "I001", # isort
 ]
-ignore = [
+lint.ignore = [
     "D100",  # Missing docstring in public module
     "D102",  # Missing docstring in public method
     "D103",  # Missing docstring in public function

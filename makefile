@@ -23,12 +23,11 @@ test:
 
 ## Lint code
 lint:
-	poetry run black . --check || true  
-	poetry run ruff .
+	poetry run ruff check . --output-format concise
 
 ## Format python code
 format:
-	poetry run black .
+	poetry run ruff format .
 
 ## Format python aggressively
 format-aggressively: format
