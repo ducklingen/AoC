@@ -68,10 +68,10 @@ for i in range(len(input_lines)):
                 if (f"{up_left}A{down_right}" in ["SAM", "MAS"]) and (
                     f"{up_right}A{down_left}" in ["SAM", "MAS"]
                 ):
-                    print(f"Found X-MAS at ({i}, {j})")
+                    print(f"Found X-MAS at ({i}, {j}).")
                     res += 1
             except IndexError:
-                print(f"({i}, {j}) on border")
+                print(f"({i}, {j}) on border - skipping.")
 
 
 print(f"Found {res} matches in total")
