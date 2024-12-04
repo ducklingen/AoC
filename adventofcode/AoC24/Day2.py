@@ -2,27 +2,21 @@ from pathlib import Path
 
 from adventofcode.helpers.AoCHelper import (
     extract_numbers_from_line,
+    is_list_sorted,
     read_input_lines,
 )
 
-path = Path("AoC24")
+INPUT_FILE_PATH = Path("AoC24") / "Inputs" / "Day2"
 
-cwd = Path.cwd()
-print(cwd)
 
-input_lines = read_input_lines(path / "Inputs" / "Day2" / "input.txt")
+input_lines = read_input_lines(INPUT_FILE_PATH / "input.txt")
 
 safe = 0
 
 
 def safe_report(report: list[int]) -> bool:
-    asc_report = report.copy()
-    asc_report.sort()
 
-    desc_report = report.copy()
-    desc_report.sort(reverse=True)
-
-    if report not in (asc_report, desc_report):
+    if not is_list_sorted(report):
         return False
 
     for j in range(len(report) - 1):
@@ -42,9 +36,25 @@ def safe_report_two(report: list[int]) -> bool:
     return False
 
 
-for i in input_lines:
-    report = extract_numbers_from_line(i)
-    safe += safe_report_two(report)
+def solve_one(input_file: str) -> int:
+    read_input_lines(INPUT_FILE_PATH / input_file)
+
+    return sum(safe_report(extract_numbers_from_line(i)) for i in input_lines)
 
 
-print(safe)
+def solve_two(input_file: str) -> int:
+    read_input_lines(INPUT_FILE_PATH / input_file)
+
+    return sum(
+        safe_report_two(extract_numbers_from_line(i)) for i in input_lines
+    )
+
+
+if __name__ == "__main__":
+    res = solve_one("input.txt")
+    assert res == 371, f"Test failed: got {res}"
+    print(f"Part one: {res}")
+
+    res = solve_two("input.txt")
+    assert res == 426, f"Test failed: got {res}"
+    print(f"Part two: {res}")

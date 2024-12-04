@@ -252,3 +252,13 @@ def memoize(f: callable) -> callable:
 
 def intersection(lst1: list, lst2: list) -> list:
     return list(set(lst1) & set(lst2))
+
+
+def is_list_sorted(lst: list[int]) -> bool:
+    asc_report = lst.copy()
+    asc_report.sort()
+
+    desc_report = lst.copy()
+    desc_report.sort(reverse=True)
+
+    return lst in (asc_report, desc_report)
