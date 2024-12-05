@@ -1,7 +1,7 @@
 import logging
+from collections.abc import Callable
 from functools import cmp_to_key
 from pathlib import Path
-from typing import Callable
 
 from adventofcode.helpers.AoCHelper import (
     extract_numbers_from_line,
