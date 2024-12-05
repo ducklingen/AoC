@@ -15,7 +15,6 @@ safe = 0
 
 
 def safe_report(report: list[int]) -> bool:
-
     if not is_list_sorted(report):
         return False
 

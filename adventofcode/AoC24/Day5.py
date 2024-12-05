@@ -25,7 +25,6 @@ def verify_updates(updates: list[int], rules: list[tuple[int, int]]) -> bool:
 
 
 def compare_function(rules: list[tuple[int, int]]) -> Callable[[int, int], int]:
-
     rules_as_dict: dict[int, list[int]] = {}
 
     for a, b in rules:
@@ -46,7 +45,6 @@ def compare_function(rules: list[tuple[int, int]]) -> Callable[[int, int], int]:
 
 
 def solve_one(input_file: str) -> int:
-
     input_lines = read_input_lines(INPUT_FOLDER_PATH / input_file)
     rules, updates = group_lines(input_lines)
 
@@ -62,7 +60,6 @@ def solve_one(input_file: str) -> int:
 
 
 def solve_two(input_file: str) -> int:
-
     input_lines = read_input_lines(INPUT_FOLDER_PATH / input_file)
     rules, updates = group_lines(input_lines)
 
