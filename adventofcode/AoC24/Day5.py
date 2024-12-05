@@ -1,6 +1,7 @@
 import logging
 from functools import cmp_to_key
 from pathlib import Path
+from typing import Callable
 
 from adventofcode.helpers.AoCHelper import (
     extract_numbers_from_line,
@@ -23,7 +24,7 @@ def verify_updates(updates: list[int], rules: list[tuple[int, int]]) -> bool:
     return True
 
 
-def compare_function(rules: list[tuple[int, int]]) -> callable:
+def compare_function(rules: list[tuple[int, int]]) -> Callable[[int, int], int]:
 
     rules_as_dict: dict[int, list[int]] = {}
 
