@@ -15,19 +15,19 @@ def extract_operations_from_line(line: str) -> list[str]:
 
 
 def perform_operation(operation: str) -> int:
-    numbers = extract_numbers_from_line(operation)
-    return numbers[0] * numbers[1]
+    x, y = extract_numbers_from_line(operation)
+    return x * y
 
 
 def solve_one(input_file: str) -> int:
-    input_line = read_input_lines(input_file)[0]
+    input_line = read_input_lines(INPUT_FOLDER_PATH / input_file)[0]
 
     cleaned_data = extract_operations_from_line(input_line)
     return sum(perform_operation(op) for op in cleaned_data)
 
 
 def solve_two(input_file: str) -> int:
-    input_line = read_input_lines(input_file)[0]
+    input_line = read_input_lines(INPUT_FOLDER_PATH / input_file)[0]
 
     cleaned_data = []
     dos = input_line.split("do()")
@@ -39,10 +39,10 @@ def solve_two(input_file: str) -> int:
 
 
 if __name__ == "__main__":
-    res = solve_one(INPUT_FOLDER_PATH / "input.txt")
+    res = solve_one("input.txt")
     assert res == 183669043, f"Test failed: got {res}"
     print(f"Part 1: {res}")
 
-    res = solve_two(INPUT_FOLDER_PATH / "input.txt")
+    res = solve_two("input.txt")
     assert res == 59097164, f"Test failed: got {res}"
     print(f"Part 2: {res}")
