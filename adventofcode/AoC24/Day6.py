@@ -1,6 +1,6 @@
 import logging
-from pathlib import Path
 from copy import deepcopy
+from pathlib import Path
 
 from adventofcode.helpers.AoCHelper import (
     read_input_lines,
