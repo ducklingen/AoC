@@ -259,7 +259,7 @@ def get_first_in_direction(
     return "."
 
 
-def turn_right(coordinates, degrees):
+def turn_right(coordinates: tuple[int, int], degrees: int) -> tuple[int, int]:
     for _ in range(ceil(degrees / 90)):
         coordinates = (coordinates[1], -coordinates[0])
 
