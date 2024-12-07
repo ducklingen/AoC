@@ -6,6 +6,7 @@ from adventofcode.helpers.AoCHelper import (
     read_input_lines,
     turn_right,
 )
+import time
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG)
@@ -128,10 +129,15 @@ def solve_two(input_file: str) -> int:
 
 
 if __name__ == "__main__":
+    start = time.time()
     res = solve_one("input.txt")
+    end_one = time.time()
     assert res == 5080, f"Test failed: got {res}"
+    logger.info(f"Solved part 1 in {end_one - start:.3f} seconds.")
     logger.info(f"Part 1: {res}")
 
     res = solve_two("input.txt")
+    end_two = time.time()
     assert res == 1919, f"Test failed: got {res}"
+    logger.info(f"Solved part 2 in {end_two - end_one:.3f} seconds.")
     logger.info(f"Part 2: {res}")
