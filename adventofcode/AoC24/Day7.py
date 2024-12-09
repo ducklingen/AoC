@@ -40,12 +40,10 @@ def solve(input_file: str, available_operations: list[str]) -> int:
         for op in operations:
             temp_res = inputs[0]
             for idx, o in enumerate(op):
-                if o == "+":
-                    temp_res = plus(temp_res, inputs[idx + 1])
-                elif o == "*":
-                    temp_res = multiply(temp_res, inputs[idx + 1])
-                elif o == "||":
-                    temp_res = concat(temp_res, inputs[idx + 1])
+                temp_res = o(temp_res, inputs[idx + 1])
+
+                if temp_res > expected:
+                    break
 
             if temp_res == expected:
                 result += expected
@@ -55,10 +53,14 @@ def solve(input_file: str, available_operations: list[str]) -> int:
 
 
 if __name__ == "__main__":
-    res = solve("input.txt", ["+", "*"])
+    start_time = time.time()
+    res = solve("input.txt", [multiply, plus])
     assert res == 1298300076754, f"Test failed: got {res}"
     logger.info(f"Part 1: {res}")
+    time_one = time.time()
+    logger.info(f"Solved part 1 in {time_one - start_time:.3f} seconds.")
 
-    res = solve("input.txt", ["+", "*", "||"])
+    res = solve("input.txt", [concat, multiply, plus])
     assert res == 248427118972289, f"Test failed: got {res}"
     logger.info(f"Part 2: {res}")
+    logger.info(f"Solved part 2 in {time.time() - time_one:.3f} seconds.")
