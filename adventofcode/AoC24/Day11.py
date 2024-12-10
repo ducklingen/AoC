@@ -22,12 +22,24 @@ def process_number(number: int) -> list[int]:
         return [number * 2024]
 
 
-for i in range(25):
+@lru_cache
+def process_times(number: int, times: int) -> list[int]:
+    input = [number]
+    for i in range(times):
+        new_list = []
+        for j in input:
+            new_list.extend(process_number(j))
+        input = new_list
+
+    return input
+
+
+for i in range(5):
     new_list = []
     for j in input:
-        new_list.extend(process_number(j))
+        new_list.extend(process_times(j, 5))
     input = new_list
 
-    print(f"Blinked {i + 1} times")
+    print(f"Blinked {(i + 1)*5} times")
 
 print(len(input))
