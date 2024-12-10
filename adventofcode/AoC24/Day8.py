@@ -1,6 +1,7 @@
 import logging
 from itertools import combinations
 from pathlib import Path
+
 import numpy as np
 
 from adventofcode.helpers.AoCHelper import (
@@ -30,11 +31,6 @@ def parse_data(input_lines: list[str]) -> dict[str, list[tuple[int, int]]]:
                     data[char].append((i, j))
 
     return data
-
-
-input_lines = read_input_lines(INPUT_FOLDER_PATH / "input.txt")
-
-data = parse_data(input_lines)
 
 
 def solve(input_file: str, second_part: bool) -> int:
