@@ -57,6 +57,34 @@ class Garden:
 
         return perimeter_lenght
 
+    def sides(self) -> int:
+        sides = 0
+
+        for pos in self.area:
+            neighbours = []
+            if (pos[0] - 1, pos[1]) in self.area:
+                neighbours.append(N)
+            if (pos[0], pos[1] + 1) in self.area:
+                neighbours.append(E)
+            if (pos[0] + 1, pos[1]) in self.area:
+                neighbours.append(S)
+            if (pos[0], pos[1] - 1) in self.area:
+                neighbours.append(W)
+
+            if len(neighbours) == 0:
+                sides += 4
+            elif len(neighbours) == 1:
+                sides += 3
+            elif len(neighbours) == 2:
+                if N in neighbours and S in neighbours:
+                    pass
+                elif E in neighbours and W in neighbours:
+                    pass
+                else:
+                    sides += 1
+
+        return sides
+
 
 def get_garden(gardens: list[Garden], pos: tuple[int, int]) -> Garden:
     for garden in gardens:
@@ -66,17 +94,14 @@ def get_garden(gardens: list[Garden], pos: tuple[int, int]) -> Garden:
     return None
 
 
-def solve_one(input_file: str) -> int:
-    input_lines = read_input_lines(INPUT_FOLDER_PATH / input_file)
-
+def locate_gardens(grid: list[list[str]]) -> list[Garden]:
     gardens: list[Garden] = []
+    for i in range(len(grid)):
+        for j in range(len(grid[i])):
+            flower_type = grid[i][j]
 
-    for i in range(len(input_lines)):
-        for j in range(len(input_lines[i])):
-            flower_type = input_lines[i][j]
-
-            north = safe_get(input_lines, (i - 1, j))
-            west = safe_get(input_lines, (i, j - 1))
+            north = safe_get(grid, (i - 1, j))
+            west = safe_get(grid, (i, j - 1))
 
             if north == flower_type:
                 garden = get_garden(gardens, (i - 1, j))
@@ -106,11 +131,30 @@ def solve_one(input_file: str) -> int:
         logging.debug(
             f"Garden {garden.area} of size {len(garden.area)} with flowers "
             f"{garden.flower_type} and perimeter {garden.perimeter_lenght()}"
+            f" and sides {garden.sides()}"
         )
+
+    return gardens
+
+
+def solve_one(input_file: str) -> int:
+    input_lines = read_input_lines(INPUT_FOLDER_PATH / input_file)
+
+    gardens: list[Garden] = locate_gardens(input_lines)
 
     res = sum(
         garden.perimeter_lenght() * len(garden.area) for garden in gardens
     )
+    logging.info(res)
+    return res
+
+
+def solve_two(input_file: str) -> int:
+    input_lines = read_input_lines(INPUT_FOLDER_PATH / input_file)
+
+    gardens: list[Garden] = locate_gardens(input_lines)
+
+    res = sum(garden.sides() * len(garden.area) for garden in gardens)
     logging.info(res)
     return res
 
