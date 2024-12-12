@@ -32,6 +32,13 @@ def safe_get(
 
 @dataclass
 class Garden:
+    """Model representing a garden.
+
+    Holds information about which positions are in the garden
+    and what type of flower is planted in the garden.
+
+    The `perimeter_lenght` method calculates the perimeter of the garden.
+    """
 
     area: set[tuple[int, int]]
     flower_type: str
@@ -69,14 +76,20 @@ def solve_one(input_file: str) -> int:
             flower_type = input_lines[i][j]
 
             north = safe_get(input_lines, (i - 1, j))
-            east = safe_get(input_lines, (i, j + 1))
-            south = safe_get(input_lines, (i + 1, j))
             west = safe_get(input_lines, (i, j - 1))
 
             if north == flower_type:
                 garden = get_garden(gardens, (i - 1, j))
                 garden.area.add((i, j))
 
+                # Handles the case where a garden is not connected
+                # above in the outerleft corner and thus have been
+                # created as a separate garden, e.g. the X's below
+                #
+                # AAXA
+                # AXXA
+                # BBBB
+                #
                 if west == flower_type:
                     additonal_garden = get_garden(gardens, (i, j - 1))
 
@@ -91,7 +104,8 @@ def solve_one(input_file: str) -> int:
 
     for garden in gardens:
         logging.debug(
-            f"Garden {garden.area} of size {len(garden.area)} with flowers {garden.flower_type} and perimeter {garden.perimeter_lenght()}"
+            f"Garden {garden.area} of size {len(garden.area)} with flowers "
+            f"{garden.flower_type} and perimeter {garden.perimeter_lenght()}"
         )
 
     res = sum(
@@ -105,4 +119,4 @@ if __name__ == "__main__":
     assert solve_one("test1.txt") == 140
     assert solve_one("test2.txt") == 772
     assert solve_one("test3.txt") == 1930
-    solve_one("input.txt")
+    assert solve_one("input.txt") == 1465112
