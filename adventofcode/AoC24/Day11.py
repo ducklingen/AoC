@@ -1,11 +1,9 @@
-from adventofcode.helpers.AoCHelper import extract_numbers_from_line
 from functools import lru_cache
+import time
+from adventofcode.helpers.AoCHelper import combine_lists
 
-
-TEST = "125 17"
-INPUT = "3 386358 86195 85 1267 3752457 0 741"
-
-input = extract_numbers_from_line(INPUT)
+TEST = [125, 17]
+INPUT = [3, 386358, 86195, 85, 1267, 3752457, 0, 741]
 
 
 @lru_cache
@@ -23,23 +21,30 @@ def process_number(number: int) -> list[int]:
 
 
 @lru_cache
-def process_times(number: int, times: int) -> list[int]:
-    input = [number]
-    for i in range(times):
-        new_list = []
-        for j in input:
-            new_list.extend(process_number(j))
+def process_list(input: tuple[int], step: int) -> list[int]:
+    new_list = []
+    for _ in range(step):
+        new_list = tuple(combine_lists([process_number(j) for j in input]))
         input = new_list
-
     return input
 
 
-for i in range(5):
-    new_list = []
-    for j in input:
-        new_list.extend(process_times(j, 5))
-    input = new_list
+def process(input: list[int], n: int, max: int, step: int = 1) -> int:
+    if n == max:
+        return len(input)
 
-    print(f"Blinked {(i + 1)*5} times")
+    new_list = process_list(tuple(input), step)
 
-print(len(input))
+    if len(new_list) >= 50:
+        return process(new_list[:25], n + step, max) + process(
+            new_list[25:], n + step, max
+        )
+
+    return process(new_list, n + step, max)
+
+
+# print(process(INPUT, 0, 50, 5))
+for i in range(6):
+    start = time.time()
+    print(process(INPUT, 0, i * 5, 5))
+    print(f"Blinked {i * 5} times in {time.time() - start: 2f} seconds")
