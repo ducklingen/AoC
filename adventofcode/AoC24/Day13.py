@@ -45,9 +45,9 @@ def solve_equations(
 
 
 def clean_solution(x: float, y: float) -> tuple[int, int]:
-    if abs(x - round(x)) < 1e-2:
+    if abs(x - round(x)) < 1e-3:
         x = float(round(x))
-    if abs(y - round(y)) < 1e-2:
+    if abs(y - round(y)) < 1e-3:
         y = float(round(y))
 
     if x >= 0 and y >= 0 and x.is_integer() and y.is_integer():
