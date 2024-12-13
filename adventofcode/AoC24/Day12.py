@@ -1,7 +1,7 @@
 import logging
 from dataclasses import dataclass
 from pathlib import Path
-
+import time
 from adventofcode.helpers.AoCHelper import (
     read_input_lines,
 )
@@ -163,4 +163,7 @@ if __name__ == "__main__":
     assert solve_one("test1.txt") == 140
     assert solve_one("test2.txt") == 772
     assert solve_one("test3.txt") == 1930
+
+    start = time.time()
     assert solve_one("input.txt") == 1465112
+    logging.info(f"Time: {time.time() - start}")
