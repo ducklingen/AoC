@@ -6,7 +6,7 @@ authors = ["Andreas Midjord <midjord.andreas@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.10, <3.12"
+python = ">=3.10, <3.14"
 regex = "^2024.11.6"
 numpy = "^2.2.0"
 
