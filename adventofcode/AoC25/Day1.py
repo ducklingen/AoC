@@ -62,10 +62,11 @@ def solve_two(input_file: str) -> int:
     return res
 
 
-
 if __name__ == "__main__":
     res = solve_one("input.txt")
+    assert res == 989, "Part 1 result does not match expected value"
     logger.info(f"Part 1: {res}")
 
     res = solve_two("input.txt")
+    assert res == 5941, "Part 2 result does not match expected value"
     logger.info(f"Part 2: {res}")
