@@ -1,4 +1,5 @@
 import logging
+import sys
 from pathlib import Path
 
 from adventofcode.helpers.AoCHelper import get_neighbours, read_input_lines
@@ -40,9 +41,9 @@ def solve_two(input_file: str) -> int:
     grid = [list(i) for i in input]
 
     res = 0
-    rolls_removed = 0
+    rolls_removed = sys.maxsize
 
-    while True:
+    while rolls_removed > 0:
         rolls_removed = 0
         new_grid = []
         for i, row in enumerate(grid):
@@ -55,9 +56,6 @@ def solve_two(input_file: str) -> int:
                     new_row.append(entry)
             new_grid.append(new_row)
 
-        if rolls_removed == 0:
-            break
-
         res += rolls_removed
         grid = new_grid
 
@@ -68,7 +66,9 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
 
     res = solve_one("input.txt")
+    assert res == 1502, "Part 1 result does not match expected value"
     logger.info(f"Part 1: {res}")
 
     res = solve_two("input.txt")
+    assert res == 9083, "Part 2 result does not match expected value"
     logger.info(f"Part 2: {res}")
