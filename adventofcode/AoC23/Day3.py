@@ -7,6 +7,8 @@ from adventofcode.helpers.AoCHelper import (
     read_input_lines,
 )
 
+logger = logging.getLogger(__name__)
+
 
 def has_adjacent_symbols(x: int, y: int, len: int, engine) -> bool:
     digits = set([str(x) for x in range(10)])
@@ -53,7 +55,7 @@ def compute_part_two(filename):
         number_pattern = r"([1-9]\d*)"
         adjecent_numbers = []
 
-        logging.debug(
+        logger.debug(
             f"Found gear in row {row_id} at positions {gear_positions}"
         )
         for gp in gear_positions:
@@ -82,7 +84,7 @@ def compute_part_two(filename):
                 int(x) for x, idx in numbers if adjecent_number(gp, idx, x)
             ]
 
-            logging.debug(
+            logger.debug(
                 f"Gear at position ({row_id}, {gp}) has adjcent "
                 f"numbers: {adjecent_numbers}"
             )

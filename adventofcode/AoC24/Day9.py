@@ -1,14 +1,12 @@
 import logging
-from itertools import combinations
-from pathlib import Path
-from copy import deepcopy
+import math
 import time
-import numpy as np
+from copy import deepcopy
+from pathlib import Path
 
 from adventofcode.helpers.AoCHelper import (
     read_input_lines,
 )
-import math
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)

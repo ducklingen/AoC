@@ -6,13 +6,13 @@ authors = ["Andreas Midjord <midjord.andreas@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.10, <3.14"
-regex = "^2024.11.6"
-numpy = "^2.2.0"
+python = ">=3.11, <3.14"
+regex = "^2025.11.3"
+numpy = "^2.3.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.4"
-ruff = "^0.8.0"
+ruff = "^0.14.0"
 pyright = "^1.1.338"
 
 [build-system]

@@ -107,8 +107,8 @@ if __name__ == "__main__":
 
     winnings = compute_one("inputs")
     assert winnings == 253313241
-    logging.info(winnings)
+    logger.info(winnings)
 
     winnings = compute_two("inputs")
     assert winnings == 253362743
-    logging.info(winnings)
+    logger.info(winnings)

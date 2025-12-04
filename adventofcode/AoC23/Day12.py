@@ -31,7 +31,7 @@ def compute_one(filename):
             groups = list(filter(str.strip, cand_as_string.split(".")))
 
             if len(groups) == len(req) and all(
-                len(g) == r for r, g in zip(req, groups)
+                len(g) == r for r, g in zip(req, groups, strict=True)
             ):
                 result += 1
 

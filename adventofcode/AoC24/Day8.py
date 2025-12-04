@@ -39,7 +39,6 @@ def solve(input_file: str, second_part: bool) -> int:
     data = parse_data(input_lines)
     antinodes: list[tuple[int, int]] = []
     for _, v in data.items():
-
         if second_part:
             antinodes.extend(v)
 
@@ -54,7 +53,6 @@ def solve(input_file: str, second_part: bool) -> int:
             antinode_two = y + vector
 
             while in_grid(antinode_one, input_lines):
-
                 antinodes.append(tuple(antinode_one))
                 if second_part:
                     antinode_one = antinode_one - vector
@@ -62,7 +60,6 @@ def solve(input_file: str, second_part: bool) -> int:
                     break
 
             while in_grid(antinode_two, input_lines):
-
                 antinodes.append(tuple(antinode_two))
                 if second_part:
                     antinode_two = antinode_two + vector
@@ -83,8 +80,8 @@ def solve_two(input_file: str) -> int:
 if __name__ == "__main__":
     res = solve_one("input.txt")
     assert res == 361, f"Test failed: got {res}"
-    logging.info(f"Part 1: {res}")
+    logger.info(f"Part 1: {res}")
 
     res = solve_two("input.txt")
     assert res == 1249, f"Test failed: got {res}"
-    logging.info(f"Part 2: {res}")
+    logger.info(f"Part 2: {res}")

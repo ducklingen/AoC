@@ -31,7 +31,9 @@ class BingoSheet:
         return False
 
     def get_score(self):
-        return sum([k * (1 - n) for k, n in zip(self.sheet, self.status)])
+        return sum(
+            [k * (1 - n) for k, n in zip(self.sheet, self.status, strict=True)]
+        )
 
 
 def initialize_bingo(input_lines):

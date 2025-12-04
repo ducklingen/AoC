@@ -39,8 +39,7 @@ def solve_equations(
 
     else:
         raise ValueError(
-            f"Can not solve the equation: {a}x + {b}y = {c}, "
-            f"{d}x + {e}y = {f}"
+            f"Can not solve the equation: {a}x + {b}y = {c}, {d}x + {e}y = {f}"
         )
 
 
@@ -80,8 +79,8 @@ def solve(input_file: str, part_two: bool):
 if __name__ == "__main__":
     res = solve("input.txt", part_two=False)
     assert res == 37_297, f"Test failed: got {res}"
-    logging.info(f"Part 1: {res}")
+    logger.info(f"Part 1: {res}")
 
     res = solve("input.txt", part_two=True)
     assert res == 83_197_086_729_371, f"Test failed: got {res}"
-    logging.info(f"Part 2: {res}")
+    logger.info(f"Part 2: {res}")

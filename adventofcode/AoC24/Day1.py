@@ -25,7 +25,7 @@ def solve_one(input_file: str) -> int:
     left.sort()
     right.sort()
 
-    return sum(abs(l - r) for l, r in zip(left, right))  # noqa: E741
+    return sum(abs(l - r) for l, r in zip(left, right, strict=True))  # noqa: E741
 
 
 def solve_two(input_file: str) -> int:

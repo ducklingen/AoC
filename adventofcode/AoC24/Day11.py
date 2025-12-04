@@ -1,5 +1,6 @@
-from functools import lru_cache
 import time
+from functools import lru_cache
+
 from adventofcode.helpers.AoCHelper import combine_lists
 
 TEST = [125, 17]

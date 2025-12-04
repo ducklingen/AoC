@@ -1,4 +1,5 @@
 import logging
+import time
 from copy import deepcopy
 from pathlib import Path
 
@@ -6,7 +7,6 @@ from adventofcode.helpers.AoCHelper import (
     read_input_lines,
     turn_right,
 )
-import time
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG)

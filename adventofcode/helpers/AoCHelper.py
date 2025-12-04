@@ -420,7 +420,7 @@ def rotate_matrix(matrix: list[list[str]]) -> list[list[str]]:
         The rotated matrix.
 
     """
-    return [list(row) for row in zip(*matrix[::-1])]
+    return [list(row) for row in zip(*matrix[::-1], strict=True)]
 
 
 def get_diagonal(matrix: list[list[str]], index: int) -> list[str]:

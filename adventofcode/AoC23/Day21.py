@@ -6,6 +6,8 @@ from adventofcode.helpers.AoCHelper import (
 )
 from adventofcode.helpers.GlobalVariables import cardinal_directions
 
+logger = logging.getLogger(__name__)
+
 
 def locate_start(grid):
     for i in range(len(grid)):
@@ -18,7 +20,7 @@ def compute_one(filename: str, steps: int) -> int:
     grid = read_input_lines(f"AoC23/Inputs/Day21/{filename}.txt")
     x, y = locate_start(grid)
 
-    logging.debug(f"Start: ({x},{y})")
+    logger.debug(f"Start: ({x},{y})")
     possible_locations = {(x, y)}
     for _ in range(steps):
         new_locations = set([])
@@ -43,4 +45,4 @@ if __name__ == "__main__":
     logger = logging.getLogger()
     logger.setLevel(logging.DEBUG)
     res = compute_one("inputs", 64)
-    logging.info(f"Part 1: {res}")
+    logger.info(f"Part 1: {res}")

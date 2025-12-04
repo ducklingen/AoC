@@ -1,7 +1,7 @@
 import logging
 from pathlib import Path
 
-from adventofcode.helpers.AoCHelper import read_input_lines, get_neighbours
+from adventofcode.helpers.AoCHelper import get_neighbours, read_input_lines
 
 path = Path("AoC25") / "Inputs" / "Day4"
 
@@ -24,8 +24,8 @@ def solve_one(input_file: str) -> int:
                     logger.debug(f"Found roll at index ({i},{j}) to pick up")
                     res += 1
 
-
     return res
+
 
 def solve_two(input_file: str) -> int:
     input = read_input_lines(path / input_file)
@@ -33,7 +33,6 @@ def solve_two(input_file: str) -> int:
     res = 0
 
     return res
-
 
 
 if __name__ == "__main__":

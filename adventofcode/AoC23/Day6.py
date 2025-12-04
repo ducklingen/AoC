@@ -21,7 +21,7 @@ def compute_part_one(filename):
 
     result = 1
 
-    for time, record in zip(times, records):
+    for time, record in zip(times, records, strict=True):
         lower, upper = compute_borders(time, record)
 
         result *= upper - lower + 1

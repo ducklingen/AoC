@@ -47,7 +47,9 @@ def find_stable_configuration(
         initial_configuration, neighbour_limit, immediate_neighbour
     )
 
-    while not min([i == j for i, j in zip(initial_seats, updated_seats)]):
+    while not min(
+        [i == j for i, j in zip(initial_seats, updated_seats, strict=True)]
+    ):
         initial_seats = updated_seats
         updated_seats = process_seats(
             initial_seats, neighbour_limit, immediate_neighbour

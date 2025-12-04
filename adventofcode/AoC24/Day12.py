@@ -1,7 +1,8 @@
 import logging
+import time
 from dataclasses import dataclass
 from pathlib import Path
-import time
+
 from adventofcode.helpers.AoCHelper import (
     read_input_lines,
 )
@@ -128,7 +129,7 @@ def locate_gardens(grid: list[list[str]]) -> list[Garden]:
                 gardens.append(Garden({(i, j)}, flower_type))
 
     for garden in gardens:
-        logging.debug(
+        logger.debug(
             f"Garden {garden.area} of size {len(garden.area)} with flowers "
             f"{garden.flower_type} and perimeter {garden.perimeter_lenght()}"
             f" and sides {garden.sides()}"
@@ -145,7 +146,7 @@ def solve_one(input_file: str) -> int:
     res = sum(
         garden.perimeter_lenght() * len(garden.area) for garden in gardens
     )
-    logging.info(res)
+    logger.info(res)
     return res
 
 
@@ -155,7 +156,7 @@ def solve_two(input_file: str) -> int:
     gardens: list[Garden] = locate_gardens(input_lines)
 
     res = sum(garden.sides() * len(garden.area) for garden in gardens)
-    logging.info(res)
+    logger.info(res)
     return res
 
 
@@ -166,4 +167,4 @@ if __name__ == "__main__":
 
     start = time.time()
     assert solve_one("input.txt") == 1465112
-    logging.info(f"Time: {time.time() - start}")
+    logger.info(f"Time: {time.time() - start}")
