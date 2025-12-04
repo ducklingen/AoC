@@ -32,23 +32,13 @@ def get_max_voltage(battery: str, length: int) -> int:
 def solve_one(input_file: str) -> int:
     input = read_input_lines(path / input_file)
 
-    res = 0
-
-    for battery in input:
-        res += get_max_voltage(battery, 2)
-
-    return res
+    return sum(get_max_voltage(battery, 2) for battery in input)
 
 
 def solve_two(input_file: str) -> int:
     input = read_input_lines(path / input_file)
 
-    res = 0
-
-    for battery in input:
-        res += get_max_voltage(battery, 12)
-
-    return res
+    return sum(get_max_voltage(battery, 12) for battery in input)
 
 
 if __name__ == "__main__":
