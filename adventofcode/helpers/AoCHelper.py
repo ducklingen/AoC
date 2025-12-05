@@ -122,7 +122,20 @@ def list_to_string(strings: list[str], separator: str = ""):
     return separator.join(strings)
 
 
-def group_lines(inputlines):
+def group_lines(inputlines: list[str]) -> list[list[str]]:
+    """Group lines by empty lines.
+
+    Parameters
+    ----------
+    inputlines : list[str]
+        A list of strings to group.
+
+    Returns
+    -------
+    list[list[str]]
+        A list of groups of strings.
+
+    """
     groups = []
     group = []
 
